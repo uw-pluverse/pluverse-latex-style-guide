@@ -16,3 +16,6 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 - Easy to identify the entry of the tex project.
 
 ### Use '~' between the words and '\cite', and '\ref'.
+
+### Put captions above tables, and below figures.
+
