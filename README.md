@@ -17,5 +17,10 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 
 ## Use '~' between the words and '\cite', and '\ref'.
 
+This allows the citation or the figure label to stay together with the previous word with a whitespace in between.
+
+- `A and B developed a new approach~\cite{paper-id}`
+- `Figure~\ref{figure-label} shows the overall framework.`
+
 ## Put captions above tables, and below figures.
 
