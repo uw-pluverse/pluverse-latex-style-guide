@@ -24,3 +24,12 @@ This allows the citation or the figure label to stay together with the previous 
 
 ## Put captions above tables, and below figures.
 
+This applies to most of the proceeding formats.
+
+## Always use vector graphs and use the right font in the graphs.
+
+- Try to avoid using `.png`, `.jpg` and `.bmp`, because they look blury when zoomed in.
+
+- Always use `.eps` or `.pdf`.
+
+- Make sure the font in the figure is the same font.
