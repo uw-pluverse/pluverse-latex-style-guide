@@ -33,3 +33,7 @@ This applies to most of the proceeding formats.
 - Always use `.eps` or `.pdf`.
 
 - Make sure the font in the figure is the same font.
+
+## Write numbers in words.
+
+More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
