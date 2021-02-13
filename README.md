@@ -36,4 +36,6 @@ This applies to most of the proceeding formats.
 
 ## Write numbers in words.
 
+If you use numbers such as `1`, `2`, `100`, and `1000`, you should write `one`, `two`, `one hundred`, and `one thousand`.
+
 More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
