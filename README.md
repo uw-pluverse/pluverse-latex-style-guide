@@ -80,6 +80,6 @@ For example
 
 
 ## Other files in this repo
-`comment_macror.tex`, to left comments
+`comment_macror.tex`, to leave comments
 `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
 `abbr_macros.tex`, macro for common macros.
