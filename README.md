@@ -81,7 +81,10 @@ For example
 
 Trailing whitespaces are not friendly to git, because it introduce unnecessary diff.
 
-If you use texstudio, you can enable removing trailing whitespaces on save in the `setting`.
+If you use TeXStudio, you can enable removing trailing whitespaces on save in the `setting`.
+
+* On MacOs, From the top menu, click `TeXStudio->Preference->Editor`, and tick `Remove Trailing Whitespace on Save`
+* Not sure how to set this on other OS. 
 
 
 ## Other files in this repo
