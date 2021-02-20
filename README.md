@@ -77,6 +77,11 @@ For example
 ``The title of this paper is hope''
 ```
 
+## Avoid trailing whitespaces
+
+Trailing whitespaces are not friendly to git, because it introduce unnecessary diff.
+
+If you use texstudio, you can enable removing trailing whitespaces on save in the `setting`.
 
 
 ## Other files in this repo
