@@ -87,6 +87,12 @@ If you use TeXStudio, you can enable removing trailing whitespaces on save in th
 * Not sure how to set this on other OS. 
 
 
+## Words in the math mode, e.g., `\[\]` or `$$`
+
+If you want to use words in a math formula, remember to use \textit to wrap the word.
+
+For example, `$time = ComptueTime(t + 1)$` should be written as `$\textit{time} = \textit{ComputeTime}(t + 1)$`
+
 ## Other files in this repo
 `comment_macror.tex`, to leave comments
 `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
