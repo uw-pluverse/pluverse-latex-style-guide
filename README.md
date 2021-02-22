@@ -60,6 +60,10 @@ More information can be found [here](https://www.dcu.ie/sites/default/files/stud
 
 Avoid the citation from arxiv, if possile.
 
+## No citations in `abstract`
+
+You should not cite any paper in the `Abstract` section.
+
 ## Use language tool to check the grammar.
 
 If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a/282571.
