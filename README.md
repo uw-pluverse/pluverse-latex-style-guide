@@ -64,6 +64,19 @@ Avoid the citation from arxiv, if possile.
 
 You should not cite any paper in the `Abstract` section.
 
+## Use macros for for constants
+
+If you have some numbers used throughout your paper, create a macro, and use that macro instead.
+
+For example, if you repeatedly mention `Our approach is 35% faster than the state of the art.`, then it is better to refactor your LaTeX into the following
+
+```
+usepackage{xspace}
+\newcommand{\PerformanceGain}{35\%\xspace}
+......
+Our approach is \PerformanceGain faster than the state of the art.
+```
+
 ## Use language tool to check the grammar.
 
 If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a/282571.
