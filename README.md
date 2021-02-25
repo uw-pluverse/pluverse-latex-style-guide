@@ -56,6 +56,12 @@ If you use number such as `2021`, it should write it as `2,021`
 
 More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
 
+## Avod using abbreviations.
+
+Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`.
+
+Note that you are encouraged to use Latine abbreviations, such as `i.e.`, `e.g.`.
+
 ## Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
 Avoid the citation from arxiv, if possile.
