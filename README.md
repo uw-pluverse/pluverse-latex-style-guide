@@ -70,7 +70,7 @@ Avoid the citation from arxiv, if possile.
 
 You should not cite any paper in the `Abstract` section.
 
-## Use macros for for constants
+## Use macros for constants
 
 If you have some numbers used throughout your paper, create a macro, and use that macro instead.
 
