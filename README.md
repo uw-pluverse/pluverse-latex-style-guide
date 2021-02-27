@@ -117,6 +117,7 @@ If you want to use words in a math formula, remember to use \textit to wrap the 
 For example, `$time = ComptueTime(t + 1)$` should be written as `$\textit{time} = \textit{ComputeTime}(t + 1)$`
 
 ## Other files in this repo
-`comment_macror.tex`, to leave comments
-`auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
-`abbr_macros.tex`, macro for common macros.
+
+* `comment_macror.tex`, to leave comments
+* `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
+* `abbr_macros.tex`, macro for common macros.
