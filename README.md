@@ -56,19 +56,23 @@ If you use number such as `2021`, it should write it as `2,021`
 
 More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
 
-## Avod using abbreviations.
+## Avoid using abbreviations.
 
 Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`.
 
-Note that you are encouraged to use Latine abbreviations, such as `i.e.`, `e.g.`.
+Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
 ## Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
-Avoid the citation from arxiv, if possile.
+Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore. 
+
+DBLP is a good source for tracking a person's publication records and download bib files. Just be careful: sometimes a paper can appear twice if it is published both in conference/journal and arxiv. Please DO NOT select the one from arxiv. 
+
+Avoid the citation from arxiv, if possible. 
 
 ## No citations in `abstract`
 
-You should not cite any paper in the `Abstract` section.
+You should not cite any papers in the `Abstract` section.
 
 ## Use macros for constants
 
