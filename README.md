@@ -22,6 +22,12 @@ This allows the citation or the figure label to stay together with the previous 
 - `A and B developed a new approach~\cite{paper-id}`
 - `Figure~\ref{figure-label} shows the overall framework.`
 
+## Capitalize Figure and Table in 'Figure~\ref{xxx}' and 'Table~\ref{xxx}'
+
+Correct: `In Figure 1, we know ...` 
+
+Wrong: `In figure 1, we know ...`
+
 ## Put captions above tables, and below figures.
 
 This applies to most of the proceeding formats.
