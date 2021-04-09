@@ -64,7 +64,7 @@ More information can be found [here](https://www.dcu.ie/sites/default/files/stud
 
 ## Avoid using abbreviations.
 
-Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`.
+Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`. You should also avoid using `they're`, `don't`, `can't`, etc; instead you should use `they are`, `do not`, `cannot`. 
 
 Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
