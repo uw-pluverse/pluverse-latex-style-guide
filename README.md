@@ -28,6 +28,18 @@ Correct: `In Figure 1, we know ...`
 
 Wrong: `In figure 1, we know ...`
 
+## Label Naming Convention
+
+* Table: \label{tbl:...}
+* Subtable: \label{subtbl:...}
+* Figure: \label{fig:...}
+* Subfigure: \label{subfig:...}
+* Section: \label{sec:...}
+* Subsection: \label{subsec:...}
+* Subsubsection: \label{subsubsec:...}
+* Algorithm: \label{alg:...}
+* Line: \label{line:...}
+
 ## Put captions above tables, and below figures.
 
 This applies to most of the proceeding formats.
