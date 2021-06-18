@@ -50,6 +50,22 @@ The first word in caption of Table/Figure should be capitalized, but not for pre
 
 For example, it should be `The Effectiveness of ADF in Three Datasets`.
 
+Here is a detailed guideline from the feedback from a proceeding publisher:
+
+Headline-style capitalization should be used.
+
+**Capitalize**:
+
+ - first and last word, first word after a colon
+ - all major words (nouns, pronouns, verbs, adjectives, adverbs)
+
+**Lowercase**:
+
+ - articles (the, a, an)
+ - prepositions (regardless of length)
+ - conjunctions (and, but, for, or, nor)
+ - to, as
+
 ## Always use vector graphs and use the right font in the graphs.
 
 - Try to avoid using `.png`, `.jpg` and `.bmp`, because they look blury when zoomed in.
@@ -65,7 +81,7 @@ This website can help you pick color https://learnui.design/tools/data-color-pic
 
 ## Use booktab table style. 
 
-For table, you can use this website.https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
+For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
 ## Write numbers in words.
 
@@ -138,8 +154,16 @@ If you want to use words in a math formula, remember to use \textit to wrap the 
 
 For example, `$time = ComptueTime(t + 1)$` should be written as `$\textit{time} = \textit{ComputeTime}(t + 1)$`
 
+## ACKNOWLEDGMENTS should not be numbered
+
+ACKNOWLEDGMENTS section shall not have a section number. It should be added using the environment `\begin{ack} \end{ack}` instead of `\section{ack}`
+
+Please note it is ACKNOWLEDGMENTS, not ACKNOWLEDG**E**MENTS.
+
 ## Other files in this repo
 
 * `comment_macror.tex`, to leave comments
 * `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
 * `abbr_macros.tex`, macro for common macros.
+* `response_letter.tex`, a rough template for journal response letter.  
+
