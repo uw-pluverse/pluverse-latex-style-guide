@@ -1,0 +1,127 @@
+\documentclass[a4paper,12pt]{article} % This defines the style of your paper
+%\documentclass[natbib]{svjour3}
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry} 
+%\usepackage{titling}
+\usepackage{amsmath}  
+\usepackage{amsfonts}
+ 
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\usepackage[OT1]{fontenc}
+\usepackage{pifont}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphics}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+\newcommand*{\eg}{e.g., }
+\newcommand*{\mycode}{\fontfamily{lmtt}\selectfont}
+\newcommand*{\mynote}{\fontfamily{lmss}\selectfont}
+\newcommand*{\ie}{i.e.,}
+\newcommand*{\etc}{etc. }
+\newcommand*{\all}{et al. }
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand{\mytodocyan}[1]{\textcolor{cyan}{~#1}}
+
+
+
+\newcounter{numcomment}
+
+\newcommand{\newhline}[0]{
+	
+	\
+	
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}}
+	
+	\
+	
+}
+\newcommand{\comment}[1]{\newhline\refstepcounter{numcomment}\textbf{Comment~\#\thenumcomment\label{#1}}:}
+\newcommand{\brief}{\textbf{Brief Reponse~\#\thenumcomment}: }
+\newcommand{\full}{\textbf{Full Reponse~\#\thenumcomment}: }
+\newcommand{\response}{\textbf{Reponse~\#\thenumcomment}: }
+%\newcommand*{\short}[1]{\textbf{Brief Reponse #{~#1}}:}
+%\newcommand*{\full}[2]{\textbf{Full Reponse #{~#1}}: }
+
+
+%\newenvironment{comment}[1][]{\refstepcounter{comment}\par\medskip
+%	\textbf{Comment~\thecomment. #1} \rmfamily}{\medskip}
+
+
+\DeclareRobustCommand{\legendsquare}[1]{%
+	\textcolor{#1}{\rule{4ex}{2ex}}%
+}
+\newcommand{\victor}[1]{\mytodocyan{[victor: #1]}}
+
+
+
+\title{Response Letter}
+%\subtitle{EMSE manuscript #EMSE-D-20-00124}
+\author{FirstName, LastName}
+\date{May 16, 2021}
+\begin{document}
+	
+	\maketitle
+	\begin{center}
+		\begin{tabular}{c} % This is a simple tabular environment to align your text nicely
+			TOSEM/TSE/EMSE manuscript id: XXXXX \\
+			Paper Title: First line \\ and the second line if necessary\\
+		\end{tabular}
+	\end{center}
+
+\section{Overview}
+In the overview, you should at least do the following things:
+
+	First, please thank the reviewers and editors for their comments.
+	
+	Second, please highlight that you have address the all the major issues raised by the reviewers and editors, and almost all minor issues raised.
+	
+	Third, please summarize which significant revision is done in this version.
+	
+\section{Response to the Comments Raised by the Editor and by Multiple Reviewers}
+\label{meta}
+First, we are going to discuss the comments summarized by the editor and the comments from multiple reviewers.
+
+\comment{q1}
+%You can cite q1
+Reviewer 1 and 3 both point out XXX. 
+
+\brief
+We reformulated the XXX.
+
+\full
+Now the XXX is changed as the following:
+\textit{Your response here.}
+
+
+\comment{}
+Please explain what are the classic algorithms and provide references to them and to studies that have compared them.
+
+\response
+Your response here. 
+The following is an example to refer the previous Response. 
+
+Please note that more detailed can be found in the Response~\ref{q1}.
+
+
+
+
+\section{Response to the Comments Raised by  Reviewer 1}
+
+\comment{}
+The acronym of the DL and DNN.
+
+\response
+To not confuse the readers, now the term ``DNN models'' is used in our paper, instead of using interchangeably it and `deep learning models`''. 
+
+
+\bibliographystyle{acm}
+\bibliography{example.bib}
+
+\end{document}
+
+
