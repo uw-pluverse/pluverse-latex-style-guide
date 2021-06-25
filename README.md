@@ -83,6 +83,8 @@ This website can help you pick color https://learnui.design/tools/data-color-pic
 
 For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
+[Here](reference/guide-tables.pdf) is a guide on how to design good-looking tables in LaTex by Markus Püschel.
+
 ## Write numbers in words.
 
 If you use numbers such as `1`, `2`, `100`, and `1000`, you should write `one`, `two`, `one hundred`, and `one thousand`.
