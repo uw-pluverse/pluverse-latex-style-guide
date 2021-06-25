@@ -83,7 +83,7 @@ This website can help you pick color https://learnui.design/tools/data-color-pic
 
 For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
-[Here](reference/guide-tables.pdf) is a guide on how to design good-looking tables in LaTex by Markus Püschel.
+[Here](reference/guide-tables.pdf) is a guide on how to design good-looking tables in LaTex by [Markus Püschel](https://people.inf.ethz.ch/markusp/teaching/guides/guide-tables.pdf).
 
 ## Write numbers in words.
 
