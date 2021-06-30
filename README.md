@@ -1,3 +1,7 @@
+## Capitalize words in your titles properly.
+
+Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms.
+
 ## Short Column Width
 
 Keep a line short. I would recommend to break a line at 60. The benefits of doing this are
