@@ -81,7 +81,10 @@ Headline-style capitalization should be used.
 ## Carefully select the color and the markers in the figure. 
 
 The color and markers of figures, especially for the line chart and bar chart, should be able to distinguished even in black-white printing.
-This website can help you pick color https://learnui.design/tools/data-color-picker.html
+
+These two websites can help you pick color https://learnui.design/tools/data-color-picker.html and https://colorbrewer2.org/. 
+
+Remember to pick the color that is print-friendly.
 
 ## Use booktab table style. 
 
