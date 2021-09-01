@@ -157,6 +157,10 @@ If you use TeXStudio, you can enable removing trailing whitespaces on save in th
 * Not sure how to set this on other OS. 
 
 
+## Referring to a section, subsection, or a subsubsection
+
+Use `\S\ref{section-label}`. Note that there is no space between `\S` and `\ref{section-label}`
+
 ## Words in the math mode, e.g., `\[\]` or `$$`
 
 If you want to use words in a math formula, remember to use \textit to wrap the word.
