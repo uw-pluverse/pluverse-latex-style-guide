@@ -15,6 +15,21 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{graphics}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newenvironment{copypaper}
+{
+	\renewcommand{\parskip}{\baselineskip}
+	\begin{tcolorbox}[
+		colback=gray!10,
+		colframe=gray!10,
+		sharp corners,
+		breakable
+		]
+	}
+	{
+	\end{tcolorbox}
+}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
 \newcommand*{\eg}{e.g., }
 \newcommand*{\mycode}{\fontfamily{lmtt}\selectfont}
@@ -40,7 +55,7 @@
 	\
 	
 }
-\newcommand{\comment}[1]{\newhline\refstepcounter{numcomment}\textbf{Comment~\#\thenumcomment\label{#1}}:}
+\newcommand{\mycomment}[1]{\newhline\refstepcounter{numcomment}\textbf{Comment~\#\thenumcomment\label{#1}}:}
 \newcommand{\brief}{\textbf{Brief Reponse~\#\thenumcomment}: }
 \newcommand{\full}{\textbf{Full Reponse~\#\thenumcomment}: }
 \newcommand{\response}{\textbf{Reponse~\#\thenumcomment}: }
@@ -86,7 +101,7 @@ In the overview, you should at least do the following things:
 \label{meta}
 First, we are going to discuss the comments summarized by the editor and the comments from multiple reviewers.
 
-\comment{q1}
+\mycomment{q1}
 %You can cite q1
 Reviewer 1 and 3 both point out XXX. 
 
@@ -95,10 +110,12 @@ We reformulated the XXX.
 
 \full
 Now the XXX is changed as the following:
-\textit{Your response here.}
+\begin{copypaper}
+	\textit{Your response here.}
+\end{copypaper}
 
 
-\comment{}
+\mycomment{}
 Please explain what are the classic algorithms and provide references to them and to studies that have compared them.
 
 \response
