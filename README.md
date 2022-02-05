@@ -1,6 +1,6 @@
 ## Capitalize words in your titles properly.
 
-Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms.
+Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms. Note that this rule applies to paper titles, subtitles, and all (sub)section titles.
 
 ## Short Column Width
 
