@@ -173,6 +173,10 @@ ACKNOWLEDGMENTS section shall not have a section number. It should be added usin
 
 Please note it is ACKNOWLEDGMENTS, not ACKNOWLEDG**E**MENTS.
 
+## Use \usepackage{subcaption} to include multiple figures in one figure environment.
+
+TBD: need to have an example here.
+
 ## Other files in this repo
 
 * `comment_macror.tex`, to leave comments
