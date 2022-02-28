@@ -177,6 +177,32 @@ Please note it is ACKNOWLEDGMENTS, not ACKNOWLEDG**E**MENTS.
 
 TBD: need to have an example here.
 
+## Use cleveref
+
+Cleveref automatically determine the type of cross-reference and fill in the appropate
+cross-reference (Figure, Table, Section, etc.).
+
+To use cleveref, load the cleveref package last and use the following configurations.
+```
+\usepackage{cleveref} % This package must be loaded in the end.
+
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Table}{Tables}
+\Crefname{figure}{Figure}{Figures}
+\crefname{figure}{Figure}{Figures}
+\Crefname{algocf}{Algorithm}{Algorithms}
+\crefname{algocf}{Algorithm}{Algorithms}
+
+% https://tex.stackexchange.com/questions/81634/cleveref-configure-symbol-for-all-sectioning-types-once-time
+\crefformat{chapter}{\S#2#1#3}
+\crefmultiformat{chapter}{\S\S#2#1#3}{ and~#2#1#3}{, #2#1#3}{, and~#2#1#3}
+
+\crefformat{section}{\S#2#1#3}
+\crefmultiformat{section}{\S\S#2#1#3}{ and~#2#1#3}{, #2#1#3}{, and~#2#1#3}
+```
+
+When referencing labels, instead of using \ref, use \cref.
+
 ## Other files in this repo
 
 * `comment_macror.tex`, to leave comments
