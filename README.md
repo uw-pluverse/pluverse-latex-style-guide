@@ -192,6 +192,8 @@ To use cleveref, load the cleveref package last and use the following configurat
 \crefname{figure}{Figure}{Figures}
 \Crefname{algocf}{Algorithm}{Algorithms}
 \crefname{algocf}{Algorithm}{Algorithms}
+\Crefname{algorithm}{Algorithm}{Algorithms}
+\crefname{algorithm}{Algorithm}{Algorithms}
 
 % https://tex.stackexchange.com/questions/81634/cleveref-configure-symbol-for-all-sectioning-types-once-time
 \crefformat{chapter}{\S#2#1#3}
