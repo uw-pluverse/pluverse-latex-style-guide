@@ -86,11 +86,24 @@ These two websites can help you pick color https://learnui.design/tools/data-col
 
 Remember to pick the color that is print-friendly.
 
+## The font of the text in figures should be same as the font of main content.
+
+Usually it should be Times New Roman.
+
+
+## The font size of text in figures and table should not be larger than the font size of main content
+
+Be carefully when you use resize.
+
+
 ## Use booktab table style. 
 
 For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
 [Here](reference/guide-tables.pdf) is a guide on how to design good-looking tables in LaTex by [Markus Püschel](https://people.inf.ethz.ch/markusp/teaching/guides/guide-tables.pdf).
+
+
+
 
 ## Write numbers in words.
 
@@ -172,6 +185,15 @@ For example, `$time = ComptueTime(t + 1)$` should be written as `$\textit{time} 
 ACKNOWLEDGMENTS section shall not have a section number. It should be added using the environment `\begin{ack} \end{ack}` instead of `\section{ack}`
 
 Please note it is ACKNOWLEDGMENTS, not ACKNOWLEDG**E**MENTS.
+
+## Do not start a subsection title right after a section title.
+
+
+```tex
+\section{Approach}
+ADD SOMETHING HERE!
+\subsection{Overview}
+```
 
 ## Use \usepackage{subcaption} to include multiple figures in one figure environment.
 
