@@ -1,5 +1,8 @@
 ## that v.s. which
 
+* In a defining clause, use that.
+* In non-defining clauses, use which.
+
 [grammarly post](https://www.grammarly.com/blog/which-vs-that/)
 
 ## always use `first`, `second`, but not `firstly`, `secondly`.
