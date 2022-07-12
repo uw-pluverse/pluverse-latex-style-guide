@@ -1,8 +1,18 @@
-## Capitalize words in your titles properly.
+(in progress of restrucing the guide)
 
-Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms. Note that this rule applies to paper titles, subtitles, and all (sub)section titles.
+# Tools, Files and Formats
 
-## Short Column Width
+### Use a git repository for collaboration. 
+
+- Git is much better at tracking changes than overleaf. 
+
+- You can use TexStudio, vim or other editors locally and push you changes to the remote git repository. 
+
+### Use a grammar checker.
+
+If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a/282571.
+
+### Short Column Width
 
 Keep a line short. I would recommend to break a line at 60. The benefits of doing this are
 
@@ -10,29 +20,42 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 - Better bi-directional mapping between the output pdf file and the latex source.
 - Friendly to the editor. No need to use the editor's wrapping functionality.
 
-## Decompose a single BIG .tex file into multiple .tex files
+### Decompose a single BIG .tex file into multiple .tex files
 
 - Friendly to version control system. Easy to diff. Minimize merge conflicts.
 - Better organization of the paper, for example, each section is in its own file.
 
-## Have a main.tex file
+### Have a main.tex file
 
 - Easy to identify the entry of the tex project.
 
-## Use '~' between the words and '\cite', and '\ref'.
+
+
+
+
+
+# Writing 
+
+### Capitalize words in your titles properly.
+
+Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms. Note that this rule applies to paper titles, subtitles, and all (sub)section titles.
+
+
+
+### Use '~' between the words and '\cite', and '\ref'.
 
 This allows the citation or the figure label to stay together with the previous word with a whitespace in between.
 
 - `A and B developed a new approach~\cite{paper-id}`
 - `Figure~\ref{figure-label} shows the overall framework.`
 
-## Capitalize Figure and Table in 'Figure~\ref{xxx}' and 'Table~\ref{xxx}'
+### Capitalize Figure and Table in 'Figure~\ref{xxx}' and 'Table~\ref{xxx}'
 
 Correct: `In Figure 1, we know ...` 
 
 Wrong: `In figure 1, we know ...`
 
-## Label Naming Convention
+### Label Naming Convention
 
 * Table: \label{tbl:...}
 * Subtable: \label{subtbl:...}
@@ -44,11 +67,11 @@ Wrong: `In figure 1, we know ...`
 * Algorithm: \label{alg:...}
 * Line: \label{line:...}
 
-## Put captions above tables, and below figures.
+### Put captions above tables, and below figures.
 
 This applies to most of the proceeding formats.
 
-## Capitalize the caption for meaningful word.
+### Capitalize the caption for meaningful word.
 
 The first word in caption of Table/Figure should be capitalized, but not for preposition and conjunction word. 
 
@@ -70,7 +93,7 @@ Headline-style capitalization should be used.
  - conjunctions (and, but, for, or, nor)
  - to, as
 
-## Always use vector graphs and use the right font in the graphs.
+### Always use vector graphs and use the right font in the graphs.
 
 - Try to avoid using `.png`, `.jpg` and `.bmp`, because they look blury when zoomed in.
 
@@ -78,7 +101,7 @@ Headline-style capitalization should be used.
 
 - Make sure the font in the figure is the same font.
 
-## Carefully select the color and the markers in the figure. 
+### Carefully select the color and the markers in the figure. 
 
 The color and markers of figures, especially for the line chart and bar chart, should be able to distinguished even in black-white printing.
 
@@ -86,17 +109,17 @@ These two websites can help you pick color https://learnui.design/tools/data-col
 
 Remember to pick the color that is print-friendly.
 
-## The font of the text in figures should be same as the font of main content.
+### The font of the text in figures should be same as the font of main content.
 
 Usually it should be Times New Roman.
 
 
-## The font size of text in figures and table should not be larger than the font size of main content
+### The font size of text in figures and table should not be larger than the font size of main content
 
 Be carefully when you use resize.
 
 
-## Use booktab table style. 
+### Use booktab table style. 
 
 For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
@@ -105,20 +128,20 @@ For table, you can use this website https://www.tablesgenerator.com/. Now it is 
 
 
 
-## Write numbers in words.
+### Write numbers in words.
 
 If you use numbers such as `1`, `2`, `100`, and `1000`, you should write `one`, `two`, `one hundred`, and `one thousand`.
 If you use number such as `2021`, it should write it as `2,021`
 
 More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
 
-## Avoid using abbreviations.
+### Avoid using abbreviations.
 
 Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`. You should also avoid using `they're`, `don't`, `can't`, etc; instead you should use `they are`, `do not`, `cannot`. 
 
 Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
-## Try to use bib files from ACM Digitial Library and IEEE Xplore.
+### Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
 Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore. 
 
@@ -126,11 +149,11 @@ DBLP is a good source for tracking a person's publication records and download b
 
 Avoid the citation from arxiv, if possible. 
 
-## No citations in `abstract`
+### No citations in `abstract`
 
 You should not cite any papers in the `Abstract` section.
 
-## Use macros for constants
+### Use macros for constants
 
 If you have some numbers used throughout your paper, create a macro, and use that macro instead.
 
@@ -143,11 +166,9 @@ usepackage{xspace}
 Our approach is \PerformanceGain faster than the state of the art.
 ```
 
-## Use language tool to check the grammar.
 
-If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a/282571.
 
-## Quote.
+### Quote.
 
 Single quotation marks are produced in LaTeX using  ` and  '.
 
@@ -160,7 +181,7 @@ For example
 ``The title of this paper is hope''
 ```
 
-## Avoid trailing whitespaces
+### Avoid trailing whitespaces
 
 Trailing whitespaces are not friendly to git, because it introduce unnecessary diff.
 
@@ -170,23 +191,23 @@ If you use TeXStudio, you can enable removing trailing whitespaces on save in th
 * Not sure how to set this on other OS. 
 
 
-## Referring to a section, subsection, or a subsubsection
+### Referring to a section, subsection, or a subsubsection
 
 Use `\S\ref{section-label}`. Note that there is no space between `\S` and `\ref{section-label}`
 
-## Words in the math mode, e.g., `\[\]` or `$$`
+### Words in the math mode, e.g., `\[\]` or `$$`
 
 If you want to use words in a math formula, remember to use \textit to wrap the word.
 
 For example, `$time = ComptueTime(t + 1)$` should be written as `$\textit{time} = \textit{ComputeTime}(t + 1)$`
 
-## ACKNOWLEDGMENTS should not be numbered
+### ACKNOWLEDGMENTS should not be numbered
 
 ACKNOWLEDGMENTS section shall not have a section number. It should be added using the environment `\begin{ack} \end{ack}` instead of `\section{ack}`
 
 Please note it is ACKNOWLEDGMENTS, not ACKNOWLEDG**E**MENTS.
 
-## Do not start a subsection title right after a section title.
+### Do not start a subsection title right after a section title.
 
 
 ```tex
@@ -195,11 +216,11 @@ ADD SOMETHING HERE!
 \subsection{Overview}
 ```
 
-## Use \usepackage{subcaption} to include multiple figures in one figure environment.
+### Use \usepackage{subcaption} to include multiple figures in one figure environment.
 
 TBD: need to have an example here.
 
-## Use cleveref
+### Use cleveref
 
 Cleveref automatically determine the type of cross-reference and fill in the appropate
 cross-reference (Figure, Table, Section, etc.).
@@ -227,7 +248,7 @@ To use cleveref, load the cleveref package last and use the following configurat
 
 When referencing labels, instead of using \ref, use \cref.
 
-## Other files in this repo
+### Other files in this repo
 
 * `comment_macror.tex`, to leave comments
 * `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
