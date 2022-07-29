@@ -29,6 +29,16 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 
 - Easy to identify the entry of the tex project.
 
+### Install Pluverse macro files
+
+- Enter your latex directory, and run the following command
+
+```bash
+$ wget https://raw.githubusercontent.com/uw-pluverse/pluverse-latex-style-guide/master/macro/update-pluverse-macros.sh
+$ chmod +x update-pluverse-macros.sh
+$ ./update-pluverse-macros.sh
+```
+
 
 
 
