@@ -1,6 +1,38 @@
+\usepackage[ruled,lined,linesnumbered,vlined]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\textcolor{black!60}{#1}}
+\SetCommentSty{mycommfont}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{subcaption}
 \usepackage{url}
+\usepackage[utf8x]{inputenc} #to use multibyte utf-8 characters.
 \usepackage{xspace}
 \usepackage{xcolor}
+
+\lstset{
+  language=C,
+  tabsize=1,
+  %line numbers....
+  escapeinside={(*@}{@*)},
+  basicstyle=\footnotesize\ttfamily,
+  stringstyle=\color{blue},
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\small\color{cyan}\bfseries,
+  %directivestyle=\color{blue},
+  %frame=shadowbox,
+  xleftmargin=0em,
+  xrightmargin=0em,
+}
+
 
 \newcommand{\cf}{\hbox{\emph{cf.}}\xspace}
 \newcommand{\deletia}{\ldots [deletia] \ldots}
