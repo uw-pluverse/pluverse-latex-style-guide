@@ -1,6 +1,62 @@
+\usepackage{xspace}
 \usepackage{xcolor}
 
-\input{pluverse-abbr.tex}
-\input{pluverse-comment.tex}
-\input{pluverse-misc.tex}
+\newcommand{\cf}{\hbox{\emph{cf.}}\xspace}
+\newcommand{\deletia}{\ldots [deletia] \ldots}
+\newcommand{\etal}{\hbox{\emph{et al.}}\xspace}
+\newcommand{\eg}{\hbox{\emph{e.g.}}\xspace}
+\newcommand{\ie}{\hbox{\emph{i.e.}}\xspace}
+\newcommand{\scil}{\hbox{\emph{sc.}}\xspace} %scilicet: it is permitted to know
+\newcommand{\st}{\hbox{\emph{s.t.}}\xspace}
+\newcommand{\wrt}{\hbox{\emph{w.r.t.}}\xspace}
+\newcommand{\etc}{\hbox{\emph{etc.}}\xspace}
+\newcommand{\viz}{\hbox{\emph{viz.}}\xspace} %videlicet: it is permitted to see
+
+
+
+% Comment
+\newcommand{\cmt}[1]{\textit{\textcolor{red}{\footnotesize CMT: #1}}}
+% Quote and comment.
+\newcommand{\qcmt}[2]{\textit{\textcolor{red}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
+
+% TODO..
+\newcommand{\todo}[1]{\textit{\textcolor{red}{\footnotesize TODO: #1}}}
+% Quote and todo.
+\newcommand{\qtodo}[2]{\textit{\textcolor{red}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
+
+% Leave comments with name
+\definecolor{mygreen}{HTML}{02818a}
+\newcommand{\mytodoblue}[1]{\textcolor{blue}{~#1}}
+\newcommand{\mytodored}[1]{\textcolor{red}{~#1}}
+\newcommand{\mytodogreen}[1]{\textcolor{mygreen}{~#1}}
+\newcommand{\mytodoorange}[1]{\textcolor{orange}{~#1}}
+\newcommand{\mytodocyan}[1]{\textcolor{cyan}{~#1}}
+\newcommand{\mytodopink}[1]{\textcolor{purple}{~#1}}
+
+\DeclareRobustCommand{\legendsquare}[1]{%
+	\textcolor{#1}{\rule{4ex}{2ex}}%
+}
+\mathchardef\mhyphen="2D
+
+
+% Leave comments
+\newcommand{\yiwen}[1]{\mytodoblue{[Yiwen:#1]}}
+\newcommand{\cn}[1]{\mytodored{[cn: #1]}}
+\newcommand{\victor}[1]{\mytodocyan{[Victor:#1]}}
+\newcommand{\yourname}[1]{\mytodogreen{[XXX:#1]}}
+\newcommand{\name}[1]{\mytodoorange{[name:#1]}}
+
+
+
+
+\newcommand{\myparagraph}[1]{
+  \vspace*{0.04cm}
+  \noindent \textit{\textbf{#1.}}\quad
+}
+\newcommand{\mycode}[1]{\texttt{#1}\xspace}
+
+
+
+
+
 
