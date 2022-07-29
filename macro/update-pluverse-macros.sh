@@ -15,7 +15,7 @@ for file in "${MACRO_FILES[@]}" ; do
   if [[ -f "${file}" ]] ; then
     mv "${file}" ".backup.${file}.${CURRENT_TIME}" 
   fi
-  wget "${BASE_URL}/${file}"
+  wget --no-check-certificate --no-cache --no-cookies "${BASE_URL}/${file}"
 done
 
 echo "Macro files are successfully downloaded"
