@@ -18,3 +18,4 @@ for file in "${MACRO_FILES[@]}" ; do
   wget "${BASE_URL}/${file}"
 done
 
+echo "Macro files are successfully downloaded"
