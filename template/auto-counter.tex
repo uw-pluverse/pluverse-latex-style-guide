@@ -1,16 +1,10 @@
-% auto counter
+% auto counter + a colorbox
 
+% \usepackage{tcolorbox}
 \newcounter{num}
 
-% Victor: change to auto counter for findings.
-\newcommand{\finding}[1]{
-	\begin{framed}
-		\noindent
-		\textbf{Finding \refstepcounter{num}\thenum: #1
-		}
-	\end{framed}
+\newcommand{\find}[1]{ 
+    \begin{tcolorbox}
+        \textbf{Finding \refstepcounter{num}\thenum}: #1
+    \end{tcolorbox}
 }
-
-\newcommand{\find}[1]{ \begin{tcolorbox}
-		\textbf{Finding \refstepcounter{num}\thenum}: #1
-\end{tcolorbox}}
