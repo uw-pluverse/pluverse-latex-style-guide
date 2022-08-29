@@ -145,7 +145,7 @@ If you use number such as `2021`, it should write it as `2,021`
 
 More information can be found [here](https://www.dcu.ie/sites/default/files/students_learning/docs/WC_Numbers-in-academic-writing.pdf)
 
-### Avoid using abbreviations.
+### Do not use abbreviations.
 
 Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`. You should also avoid using `they're`, `don't`, `can't`, etc; instead you should use `they are`, `do not`, `cannot`. 
 
