@@ -165,7 +165,7 @@ You should not cite any papers in the `Abstract` section.
 
 ### Use macros for constants
 
-If you have some numbers used throughout your paper, create a macro, and use that macro instead.
+If you have some numbers, or string literals (e.g., functions) used throughout your paper, create a macro, and use that macro instead.
 
 For example, if you repeatedly mention `Our approach is 35% faster than the state of the art.`, then it is better to refactor your LaTeX into the following
 
