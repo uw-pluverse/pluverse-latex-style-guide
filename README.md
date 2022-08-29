@@ -265,3 +265,11 @@ When referencing labels, instead of using \ref, use \cref.
 * `abbr_macros.tex`, macro for common macros.
 * `response_letter.tex`, a rough template for journal response letter.  
 
+
+# Tricks
+
+### Use \SetKwFunction inside a caption of an algorithm2e environment
+
+Use `\protect` before the function macro, e.g., `\caption{\protect\Fn my function}`
+
+See [here](https://tex.stackexchange.com/questions/291911/how-can-i-use-an-algorithm2e-function-macro-inside-an-algorithm2e-caption)
