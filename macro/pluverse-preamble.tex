@@ -32,6 +32,15 @@
   xrightmargin=0em,
 }
 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=0.5pt] (char) {\small#1};}}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta, positioning}
+
+
 
 \newcommand{\cf}{\hbox{\emph{cf.}}\xspace}
 \newcommand{\deletia}{\ldots [deletia] \ldots}
