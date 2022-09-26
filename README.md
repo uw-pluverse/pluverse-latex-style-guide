@@ -135,7 +135,14 @@ For table, you can use this website https://www.tablesgenerator.com/. Now it is 
 
 [Here](reference/guide-tables.pdf) is a guide on how to design good-looking tables in LaTex by [Markus Püschel](https://people.inf.ethz.ch/markusp/teaching/guides/guide-tables.pdf).
 
+### Adjust the horizontal/vertical space insides table
 
+Use `\setlength` and `\arraystretch` to change the horizontal spacing (column separation) and the vertical spacing (row separation), respectively.
+
+```
+\setlength{\tabcolsep}{20pt}
+\renewcommand{\arraystretch}{1.5}
+```
 
 
 ### Write numbers in words.
