@@ -160,13 +160,13 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
 ### Evaluation Terminology
 
-- Ratio
+- [Ratio](https://www.mathsisfun.com/numbers/ratio.html)
     - Show that the number of times one value contains or is contained within the other.
     - Formula: $A/B$
-- Relative change / Relative difference / Percentage change
+- [Relative change / Relative difference / Percentage change](https://www.mathsisfun.com/numbers/percentage-change.html)
     - Show that change as a percent of the old value
     - Formula: $(A - B) / A$
-        - $A$: inistial / old value ; $B$: new value
+        - $A$: initial / old value ; $B$: new value
     - Acronym: $\% Change$
 
 ### Try to use bib files from ACM Digitial Library and IEEE Xplore.
