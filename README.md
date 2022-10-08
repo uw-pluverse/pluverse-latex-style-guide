@@ -158,6 +158,17 @@ Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use t
 
 Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
+### Evaluation Terminology
+
+- Ratio
+    - Show that the number of times one value contains or is contained within the other.
+    - Formula: $A/B$
+- Relative change / Relative difference / Percentage change
+    - Show that change as a percent of the old value
+    - Formula: $(A - B) / A$
+        - $A$: inistial / old value ; $B$: new value
+    - Acronym: $\% Change$
+
 ### Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
 Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore. 
