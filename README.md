@@ -158,6 +158,56 @@ Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use t
 
 Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
+### Evaluation Terminology
+
+- Ratio
+    - A ratio says how much of one thing there is compared to another thing.
+    It shows that the number of times one value contains or is contained within the other.
+    - Formula: 
+    $A/B$
+    - Part-to-Part vs Part-to-Whole
+        - Part-to-Part: comparing one part to another part
+            - e.g., ratio of bug discovered to bug missed = 2 : 3 or 2/3
+        - Part-to-Whole: comparing one part to the whole lot
+            - e.g., ratio bug discovered to all bugs = 2 : 5 or 2/5
+    - E.g., Perses is 2.07x faster, produces 1.13x smaller results, and reduces 3.99x fewer queries than HDD.
+    - [link](https://www.mathsisfun.com/numbers/ratio.html)
+- Percentage change / Relative change / Relative difference
+    - This shows that change as a percent of the old value. 
+    When the new value is greater then the old value, 
+    it is a percentage increase, otherwise it is a decrease.
+    - Watchout:
+        - A 10% increase from 100 is an increase of 10. BUT! A 10% reduction from 110 is a reduction of 11.
+    - Formula: 
+    $(New Value − Old Value) / Old Value \times100\%$
+    - E.g., Perses’s results are respectively 2% and 45% in size of those from DD and HDD.
+    - Acronym: $\% Change$
+    - [link](https://www.mathsisfun.com/numbers/percentage-change.html)
+- Percentage error
+    - The difference between Approximate and Exact Values, as a percentage of the Exact Value.
+    Percentage Error is all about comparing a guess or estimate to an exact value.
+    - Formula: 
+    $(Approximate Value − Exact Value) / Exact Value \times100\%$
+    - E.g., A bug detecting tool only found 95 bugs out of a 100. The tool has a 0.05% error.
+    - Acronym: $\% Error$
+    - [link](https://www.mathsisfun.com/numbers/percentage-error.html)
+- Percentage difference
+    - The difference between two values divided by the average of the two values.
+    Percentage Difference is used when both values mean the same kind of thing 
+    (for example the heights of two people).
+    - Formula:
+    $|First Value − Second Value| / |(First Value + Second Value)/2| * 100\%$
+    - Acronym: $\% Diff$ or $\% Difference$
+    - [link](https://www.mathsisfun.com/percentage-difference.html)
+
+##### Compare & Contrast
+- Ratio: how much of one value is compared to another value
+- Percentage change: compare an Old Value to a New Value
+- Percentage error: compare an Approximate Value to an Exact Value
+- Percentage difference: both values mean the Same Kind of thing (rarely used)
+- Commonly, we prefer using ratio and %change in our evaluations. %error and %diff is used less frequently as they only apply to specific scenarios.
+- Also see this [link](https://www.mathsisfun.com/data/percentage-difference-vs-error.html)
+
 ### Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
 Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore. 
