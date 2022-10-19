@@ -205,7 +205,8 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 - Percentage change: compare an Old Value to a New Value
 - Percentage error: compare an Approximate Value to an Exact Value
 - Percentage difference: both values mean the Same Kind of thing (rarely used)
-- [link](https://www.mathsisfun.com/data/percentage-difference-vs-error.html)
+- Commonly, we prefer using ratio and %change in our evaluations. %error and %diff is used less frequently as they only apply to specific scenarios.
+- Also see this [link](https://www.mathsisfun.com/data/percentage-difference-vs-error.html)
 
 ### Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
