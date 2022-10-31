@@ -12,3 +12,7 @@
 ## use `less` with uncountable nouns and `fewer` with plural countable nouns
 
 `Less` is sometimes used with a plural countable noun (e.g., less cars), particularly in conversation. However, this is grammatically incorrect.
+
+## avoid using `very`
+
+For example, `very effective` can be replaced with `remarkably effective`, `highly effective`, or `amazingly effective`.
