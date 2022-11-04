@@ -181,7 +181,7 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
     - Formula: 
     $(New Value − Old Value) / Old Value \times100\%$
     - E.g., Perses’s results are respectively 2% and 45% in size of those from DD and HDD.
-    - Acronym: $\% Change$
+    - Acronym: %Change
     - [link](https://www.mathsisfun.com/numbers/percentage-change.html)
 - Percentage error
     - The difference between Approximate and Exact Values, as a percentage of the Exact Value.
@@ -189,7 +189,7 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
     - Formula: 
     $(Approximate Value − Exact Value) / Exact Value \times100\%$
     - E.g., A bug detecting tool only found 95 bugs out of a 100. The tool has a 0.05% error.
-    - Acronym: $\% Error$
+    - Acronym: %Error
     - [link](https://www.mathsisfun.com/numbers/percentage-error.html)
 - Percentage difference
     - The difference between two values divided by the average of the two values.
@@ -197,7 +197,7 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
     (for example the heights of two people).
     - Formula:
     $|First Value − Second Value| / |(First Value + Second Value)/2| * 100\%$
-    - Acronym: $\% Diff$ or $\% Difference$
+    - Acronym: %Diff or %Difference
     - [link](https://www.mathsisfun.com/percentage-difference.html)
 
 ##### Compare & Contrast
