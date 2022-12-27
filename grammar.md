@@ -19,4 +19,4 @@ For example, `very effective` can be replaced with `remarkably effective`, `high
 
 ## banned words
 
-* "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
+#### "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
