@@ -1,0 +1,104 @@
+\documentclass[pageno]{jpaper}
+% ACM tempalte also works
+%\documentclass[sigconf,nonacm]{acmart}
+
+
+%replace XXX with the submission number you are given from the ASPLOS submission site.
+\newcommand{\asplossubmissionnumber}{XX}
+
+\usepackage[normalem]{ulem}
+
+%update the path when necessary
+\input{../macro/pluverse-preamble}
+
+
+% Move the following macro into preamble.tex
+\definecolor{OrangeRed}{RGB}{255,69,0}
+\newcommand\hla[1]{{\textcolor{blue}{#1}}}
+\newcommand\hlb[1]{{\textcolor{OrangeRed}{#1}}}
+\newcommand\hlc[1]{{\textcolor{magenta}{#1}}}
+\newcommand\hld[1]{{\textcolor{red}{#1}}}
+\newcommand\hle[1]{{\textcolor{purple}{#1}}}
+\newcommand\hlep[1]{{\textcolor{purple}{#1}}}
+\newcommand\hl[1]{{\textcolor{orange}{#1}}}
+
+
+\begin{document}
+
+
+\title{ A Template of Cover Letter for Conference Revision.
+\\ \textit{Cover Letter}}
+
+
+
+\date{}
+\maketitle
+
+\thispagestyle{empty}
+
+\newcommand{\mysection}[1]{\S{#1}\xspace}
+
+\newcommand{\requirement}[2]{\vspace*{5pt}\noindent\textbf{#1}\\{\footnotesize See #2}}
+
+
+We thank all reviewers for XXX.
+\hl{NOTE: always start from thanking reviewers.}
+
+Since the time of the previous submission,
+we made the following changes based on comments from reviewers.
+\hl{NOTE: Usually the meta-review has already listed the changes that are expected to be done in the revision.
+Summarize them using bullet points and highlight the findings.}
+
+ \hl{NOTE: This file is expected to be put into a folder ``cover-letter''
+ and this folder should be in the same folder as ``main.tex''.
+ Otherwise, please change the path accordingly.}
+
+\hl{NOTE: Read the comments in this template before using it.}
+
+
+
+\requirement{1. Importance of XXXX}{
+    \hla{the paragraph \textit{Importance of XXX} in \mysection{1}}, highlighted in \hla{blue}.
+}
+\hl{NOTE: Please update the above header accordingly}
+
+We conducted the experiments and found XXXX....
+
+\hl{NOTE: summarize the changes you made using 1-2 paragraph.
+When necessary, use table or figures properly.
+Please avoid large tables or figures. }
+
+
+\requirement{2. Comparison with \textsc{Baseline}}{
+    \hlb{\mysection{5.1}, \textit{Answer to RQ2}}, highlighted in \hlb{orange}.
+}
+
+We conducted the experiments and found XXXX....
+
+NOTE: use \verb!\hla{}!, \verb!\hlb{}! $,\dots$, \verb!\hle{}!
+in main manuscript to highlight the revised content with colors.
+\verb!\hla{}! means ``highlight bullet a''.
+You need to move the commands \verb!\hla{}! to \verb!\hle{}!
+into \texttt{preamble.tex}.
+Please check the comments above \verb!\hla{}!.
+
+
+
+\requirement{3. Effect of Parameter X}
+{\hlc{\mysection{5.2} \textit{Effect of Parameter X}}, highlighted in \hlc{magenta}.}
+
+We conducted the experiments and find XXXX....
+
+\hl{NOTE: Remember to update the reference list accordingly.
+}
+
+
+
+\bibliographystyle{plain}
+\bibliography{../main}
+
+
+
+\end{document}
+\endinput
+
