@@ -33,3 +33,4 @@ latexdiff "${TMP}/old_artical.tex" "${TMP}/new_artical.tex" > "${NEW_MAIN_DIR}/t
 pdflatex -synctex=1 -interaction=nonstopmode "${NEW_MAIN_DIR}/tmp_diff_main.tex"
 
 rm -rf "${TMP}"
+
