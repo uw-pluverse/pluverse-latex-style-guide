@@ -1,5 +1,17 @@
 #!/use/bin/env bash
 
+# This shell script can generate the difference between two multi-file latex projects
+# It contains two steps:
+# 1. use 'latexpand' to merge multi-file latex projects into single latex files
+# 2. use 'latexdiff' to generate the difference between the two single latex files
+
+# Note:
+# 1. To show the difference of figures, the new latex project should include a new
+# figure file instead of replacing the original one. Also, the original figure file
+# should not be deleted in the new latex project.
+# 2. Showing the difference of tables is not well supported as decribed in the
+# following link: https://github.com/ftilmann/latexdiff/issues/5
+
 set -o nounset
 set -o pipefail
 set -o xtrace
