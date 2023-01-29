@@ -1,4 +1,4 @@
-#!/use/bin/env bash
+#!/usr/bin/env bash
 
 # This shell script can generate the difference between two multi-file latex projects
 # It contains two steps:
