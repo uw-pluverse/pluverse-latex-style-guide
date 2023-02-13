@@ -2,11 +2,11 @@
 
 # Tools, Files and Formats
 
-### Use a git repository for collaboration. 
+### Use a git repository for collaboration.
 
-- Git is much better at tracking changes than overleaf. 
+- Git is much better at tracking changes than overleaf.
 
-- You can use TexStudio, vim or other editors locally and push you changes to the remote git repository. 
+- You can use TexStudio, vim or other editors locally and push you changes to the remote git repository.
 
 ### Use a grammar checker.
 
@@ -16,7 +16,7 @@ If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a
 
 Keep a line short. I would recommend to break a line at 60. The benefits of doing this are
 
-- Friendly to version control system. Easy to diff. 
+- Friendly to version control system. Easy to diff.
 - Better bi-directional mapping between the output pdf file and the latex source.
 - Friendly to the editor. No need to use the editor's wrapping functionality.
 
@@ -44,7 +44,7 @@ $ ./update-pluverse-macros.sh
 
 
 
-# Writing 
+# Writing
 
 ### Capitalize words in your titles properly.
 
@@ -61,7 +61,7 @@ This allows the citation or the figure label to stay together with the previous 
 
 ### Capitalize Figure and Table in 'Figure~\ref{xxx}' and 'Table~\ref{xxx}'
 
-Correct: `In Figure 1, we know ...` 
+Correct: `In Figure 1, we know ...`
 
 Wrong: `In figure 1, we know ...`
 
@@ -83,7 +83,7 @@ This applies to most of the proceeding formats.
 
 ### Capitalize the caption for meaningful word.
 
-The first word in caption of Table/Figure should be capitalized, but not for preposition and conjunction word. 
+The first word in caption of Table/Figure should be capitalized, but not for preposition and conjunction word.
 
 For example, it should be `The Effectiveness of ADF in Three Datasets`.
 
@@ -111,11 +111,11 @@ Headline-style capitalization should be used.
 
 - Make sure the font in the figure is the same font.
 
-### Carefully select the color and the markers in the figure. 
+### Carefully select the color and the markers in the figure.
 
 The color and markers of figures, especially for the line chart and bar chart, should be able to distinguished even in black-white printing.
 
-These two websites can help you pick color https://learnui.design/tools/data-color-picker.html and https://colorbrewer2.org/. 
+These two websites can help you pick color https://learnui.design/tools/data-color-picker.html and https://colorbrewer2.org/.
 
 Remember to pick the color that is print-friendly.
 
@@ -137,7 +137,7 @@ matplotlib.rcParams['ps.fonttype'] = 42
 Be carefully when you use resize.
 
 
-### Use booktab table style. 
+### Use booktab table style.
 
 For table, you can use this website https://www.tablesgenerator.com/. Now it is more common to use the "booktab table style".
 
@@ -162,16 +162,22 @@ More information can be found [here](https://www.dcu.ie/sites/default/files/stud
 
 ### Do not use abbreviations.
 
-Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`. You should also avoid using `they're`, `don't`, `can't`, etc; instead you should use `they are`, `do not`, `cannot`. 
+Do not use English word abbreviations, such as `2nd`, `no.` and `approx.`. Use the full words instead, such as `second`, `number` and `approximately`. You should also avoid using `they're`, `don't`, `can't`, etc; instead you should use `they are`, `do not`, `cannot`.
 
 Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
+
+### Use the word "benchmark" correctly.
+
+A benchmark is a test that measures the performance of hardware or software. For example, in the evaluation of Perses, each subject (e.g., clang-22382) can be considered as a benchmark. The set that includes all the benchmarks is called a benchmark suite.
+
+Reference: [SPEC CPU2006](https://dl.acm.org/doi/pdf/10.1145/1241601.1241625) and [SPEC CPU2007](https://www.spec.org/cpu2017/Docs/overview.html#benchmarks)
 
 ### Evaluation Terminology
 
 - Ratio
     - A ratio says how much of one thing there is compared to another thing.
     It shows that the number of times one value contains or is contained within the other.
-    - Formula: 
+    - Formula:
     $A/B$
     - Part-to-Part vs Part-to-Whole
         - Part-to-Part: comparing one part to another part
@@ -181,12 +187,12 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
     - E.g., Perses is 2.07x faster, produces 1.13x smaller results, and reduces 3.99x fewer queries than HDD.
     - [link](https://www.mathsisfun.com/numbers/ratio.html)
 - Percentage change / Relative change / Relative difference
-    - This shows that change as a percent of the old value. 
-    When the new value is greater then the old value, 
+    - This shows that change as a percent of the old value.
+    When the new value is greater then the old value,
     it is a percentage increase, otherwise it is a decrease.
     - Watchout:
         - A 10% increase from 100 is an increase of 10. BUT! A 10% reduction from 110 is a reduction of 11.
-    - Formula: 
+    - Formula:
     $(New Value − Old Value) / Old Value \times100\%$
     - E.g., Perses’s results are respectively 2% and 45% in size of those from DD and HDD.
     - Acronym: %Change
@@ -194,14 +200,14 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 - Percentage error
     - The difference between Approximate and Exact Values, as a percentage of the Exact Value.
     Percentage Error is all about comparing a guess or estimate to an exact value.
-    - Formula: 
+    - Formula:
     $(Approximate Value − Exact Value) / Exact Value \times100\%$
     - E.g., A bug detecting tool only found 95 bugs out of a 100. The tool has a 0.05% error.
     - Acronym: %Error
     - [link](https://www.mathsisfun.com/numbers/percentage-error.html)
 - Percentage difference
     - The difference between two values divided by the average of the two values.
-    Percentage Difference is used when both values mean the same kind of thing 
+    Percentage Difference is used when both values mean the same kind of thing
     (for example the heights of two people).
     - Formula:
     $|First Value − Second Value| / |(First Value + Second Value)/2| * 100\%$
@@ -218,11 +224,11 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
 ### Try to use bib files from ACM Digitial Library and IEEE Xplore.
 
-Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore. 
+Please try to download the paper and bib from ACM Digitial Library and IEEE Xplore.
 
-DBLP is a good source for tracking a person's publication records and download bib files. Just be careful: sometimes a paper can appear twice if it is published both in conference/journal and arxiv. Please DO NOT select the one from arxiv. 
+DBLP is a good source for tracking a person's publication records and download bib files. Just be careful: sometimes a paper can appear twice if it is published both in conference/journal and arxiv. Please DO NOT select the one from arxiv.
 
-Avoid the citation from arxiv, if possible. 
+Avoid the citation from arxiv, if possible.
 
 ### No citations in `abstract`
 
@@ -263,7 +269,7 @@ Trailing whitespaces are not friendly to git, because it introduce unnecessary d
 If you use TeXStudio, you can enable removing trailing whitespaces on save in the `setting`.
 
 * On MacOs, From the top menu, click `TeXStudio->Preference->Editor`, and tick `Remove Trailing Whitespace on Save`
-* Not sure how to set this on other OS. 
+* Not sure how to set this on other OS.
 
 
 ### Referring to a section, subsection, or a subsubsection
@@ -330,7 +336,7 @@ When referencing labels, instead of using \ref, use \cref.
 * `comment_macror.tex`, to leave comments
 * `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
 * `abbr_macros.tex`, macro for common macros.
-* `response_letter.tex`, a rough template for journal response letter.  
+* `response_letter.tex`, a rough template for journal response letter.
 
 
 # Tricks
