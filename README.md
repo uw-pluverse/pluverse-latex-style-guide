@@ -168,7 +168,7 @@ Note that you are encouraged to use Latin abbreviations, such as `i.e.`, `e.g.`.
 
 ### Use the word "benchmark" correctly.
 
-A benchmark is a test that measures the performance of hardware or software. For example, in the evaluation of Perses, each subject (e.g., clang-22382) can be considered as a benchmark. The set that includes all the benchmarks is called a benchmark suite.
+A benchmark is a test that measures the performance of hardware or software. For example, in the evaluation of Perses, each subject (e.g., clang-22382) can be considered as a benchmark. A set that includes multiple benchmarks is called a benchmark suite.
 
 Reference: [SPEC CPU2006](https://dl.acm.org/doi/pdf/10.1145/1241601.1241625) and [SPEC CPU2007](https://www.spec.org/cpu2017/Docs/overview.html#benchmarks)
 
