@@ -310,14 +310,16 @@ To use cleveref, load the cleveref package last and use the following configurat
 ```
 \usepackage{cleveref} % This package must be loaded in the end.
 
-\Crefname{table}{Table}{Tables}
-\crefname{table}{Table}{Tables}
-\Crefname{figure}{Figure}{Figures}
-\crefname{figure}{Figure}{Figures}
 \Crefname{algocf}{Algorithm}{Algorithms}
 \crefname{algocf}{Algorithm}{Algorithms}
 \Crefname{algorithm}{Algorithm}{Algorithms}
 \crefname{algorithm}{Algorithm}{Algorithms}
+\Crefname{figure}{Figure}{Figures}
+\crefname{figure}{Figure}{Figures}
+\crefname{listing}{Listing}{Listings}
+\Crefname{listing}{Listing}{Listings}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Table}{Tables}
 \crefname{thm}{Theorem}{Theorems}
 \Crefname{thm}{Theorem}{Theorems}
 
