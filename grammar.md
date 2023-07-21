@@ -17,6 +17,12 @@
 
 For example, `very effective` can be replaced with `remarkably effective`, `highly effective`, or `amazingly effective`.
 
+## no extra period after `etc.` if `etc.` is at the end of a sentence.
+
+Correct: `X......, etc.`
+
+Incorrect: `X......., etc..`
+
 ## banned words
 
 #### "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
