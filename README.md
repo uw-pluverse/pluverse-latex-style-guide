@@ -113,11 +113,17 @@ Headline-style capitalization should be used.
 
 ### Carefully select the color and the markers in the figure.
 
-The color and markers of figures, especially for the line chart and bar chart, should be able to distinguished even in black-white printing.
+The color and markers of figures, especially for the line chart and bar chart, should be able to distinguished in black-white printing.
 
-These two websites can help you pick color https://learnui.design/tools/data-color-picker.html and https://colorbrewer2.org/.
+These three websites can help you pick colors:
 
-Remember to pick the color that is print-friendly.
+* [Coloring for Colorblindness](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
+
+* [Data Viz Color Palette Generator](https://learnui.design/tools/data-color-picker.html) 
+
+* [ColorBrewer: Color Advice for Maps](https://colorbrewer2.org/)
+
+Remember to pick the color that is colorblindness-friendly and print-friendly.
 
 ### The font of the text in figures should be same as the font of main content.
 
