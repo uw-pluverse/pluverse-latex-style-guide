@@ -19,7 +19,13 @@ For example, `very effective` can be replaced with `remarkably effective`, `high
 
 ## avoid using `lots of` and `a lot of`
 
-[grammarly post](https://www.grammarly.com/blog/lots-or-plenty-of/)
+From the [grammarly post](https://www.grammarly.com/blog/lots-or-plenty-of/)
+
+
+> Although lots and plenty are acceptable in academic writing, their
+> usage is considered to be informal. In formal academic writing, it
+> is more appropriate to use many, much, and more.
+
 
 ## no extra period after `etc.` if `etc.` is at the end of a sentence.
 
