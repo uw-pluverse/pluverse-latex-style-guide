@@ -17,6 +17,10 @@
 
 For example, `very effective` can be replaced with `remarkably effective`, `highly effective`, or `amazingly effective`.
 
+## avoid using `lots of` and `a lot of`
+
+[grammarly post](https://www.grammarly.com/blog/lots-or-plenty-of/)
+
 ## no extra period after `etc.` if `etc.` is at the end of a sentence.
 
 Correct: `X......, etc.`
