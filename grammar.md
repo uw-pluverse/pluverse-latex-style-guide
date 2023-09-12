@@ -15,7 +15,9 @@
 
 ## avoid using `very`
 
-For example, `very effective` can be replaced with `remarkably effective`, `highly effective`, or `amazingly effective`.
+For example, `very effective` can be replaced with `highly effective`. 
+
+You might also consider `remarkably effective` or `amazingly effective`, though Chengnian does not like them much.
 
 ## avoid using `lots of` and `a lot of`
 
