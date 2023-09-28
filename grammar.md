@@ -35,6 +35,10 @@ Correct: `X......, etc.`
 
 Incorrect: `X......., etc..`
 
-## banned words
+## use article words before countable singular noun
+
+When a noun is countable and singular, you need to use `a/an/the` to quantify it.
+
+## anned words
 
 #### "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
