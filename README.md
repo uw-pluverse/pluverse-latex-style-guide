@@ -81,9 +81,9 @@ Wrong: `In figure 1, we know ...`
 
 This applies to most of the proceeding formats.
 
-### Capitalize the caption for meaningful word.
+### Capitalize the caption for meaningful words.
 
-The first word in caption of Table/Figure should be capitalized, but not for preposition and conjunction word.
+The first word in caption of Table/Figure should be capitalized, but not for preposition and conjunction words.
 
 For example, it should be `The Effectiveness of ADF in Three Datasets`.
 
@@ -102,6 +102,10 @@ Headline-style capitalization should be used.
  - prepositions (regardless of length)
  - conjunctions (and, but, for, or, nor)
  - to, as
+
+Note: 
+1. the word immediately preceding the hyphen should be capitalized. For example, it should be `Learning-Based Approach`.
+
 
 ### Always use vector graphs and use the right font in the graphs.
 
