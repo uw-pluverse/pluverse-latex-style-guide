@@ -104,7 +104,7 @@ Headline-style capitalization should be used.
  - to, as
 
 Note: 
-1. the word immediately preceding the hyphen should be capitalized. For example, it should be `Learning-Based Approach`.
+1. The word immediately preceding the hyphen should be capitalized. For example, it should be `Learning-Based Approach`. An exception is `X-ray`, instead of `X-Ray`.
 
 
 ### Always use vector graphs and use the right font in the graphs.
