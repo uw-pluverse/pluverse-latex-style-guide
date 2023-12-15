@@ -253,8 +253,16 @@ For example, if you repeatedly mention `Our approach is 35% faster than the stat
 ```
 usepackage{xspace}
 \newcommand{\PerformanceGain}{35\%\xspace}
+
 ......
 Our approach is \PerformanceGain faster than the state of the art.
+```
+You can also use Latex to compute simple arithmetics.
+```
+\newcommand{\cSizeDecRateProjVsPerses}{%
+    \pgfmathparse{(1 - \cSizeAvgProjValue/\cSizeAvgPersesValue)*100}
+    \pgfmathprintnumber{\pgfmathresult}\%\xspace%
+}
 ```
 
 
