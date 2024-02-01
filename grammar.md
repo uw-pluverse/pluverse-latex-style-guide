@@ -39,6 +39,12 @@ Incorrect: `X......., etc..`
 
 When a noun is countable and singular, you need to use `a/an/the` to quantify it.
 
-## anned words
+## no use of `such as` and `etc` together
+
+These two phrases cannot be used together. For example, `such as apple, organge, etc.`.
+
+If you use `such as`, then you should strictly follow the structure `such as A, B, C and D`.
+
+## banned words
 
 #### "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
