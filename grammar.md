@@ -45,6 +45,22 @@ These two phrases cannot be used together. For example, `such as apple, organge,
 
 If you use `such as`, then you should strictly follow the structure `such as A, B, C and D`.
 
+## never start with a sentence with a number or lower-case letters.
+
+For example
+
+```
+ddmin can handle ...;
+```
+
+In stead, you should write
+
+```
+The algorithm ddmin can handle ...;
+```
+
+Similarly, instead of writing `1 apple a day is good for your body`, you should write `One apple a day ...`.
+
 ## banned words
 
 #### "have no clue", reason: informal idiom, [see](https://dictionary.cambridge.org/dictionary/english/not-have-a-clue-have-no-clue)
