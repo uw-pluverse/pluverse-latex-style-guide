@@ -43,7 +43,7 @@ latexpand "${OLD_MAIN_TEX_NAME}" -o "${OLD_TMP_TEX_FILE}"
 popd
 
 pushd "${NEW_MAIN_DIR}"
-latexpand "${NEW_MAIN_TEX_NAME}" -o "${NEW_TMP_TEX_FILE}"
+latexpand --config="PICTUREENV=(?:picture|DIFnomarkup|algorithm|tabular|subfigure)[\w\d*@]*" "${NEW_MAIN_TEX_NAME}" -o "${NEW_TMP_TEX_FILE}"
 popd
 
 latexdiff "${OLD_TMP_TEX_FILE}" "${NEW_TMP_TEX_FILE}" > "${OUTPUT_PATH}"
