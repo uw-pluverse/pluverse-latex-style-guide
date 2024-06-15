@@ -13,6 +13,33 @@
 
 `Less` is sometimes used with a plural countable noun (e.g., less cars), particularly in conversation. However, this is grammatically incorrect.
 
+## It is correct to use either `positive` or `comparative` form with `compared to` 
+
+For example, 
+
+`ME:` 
+> Which version is grammatically correct?
+
+  1. Company A has a larger market share, compared to Company B.
+  2. Company A has a large market share, compared to Company B.
+  
+
+`ChatGPT:`
+> The first sentence is grammatically correct:
+
+  Company A has a larger market share, compared to Company B.
+
+  This sentence correctly uses the comparative form "larger" to compare the market
+  shares of Company A and Company B. The second sentence,
+  "Company A has a large market share, compared to Company B," is not incorrect, but it is less precise because it does not explicitly indicate the comparative nature of the market shares.
+
+
+[Merriam Webster](https://www.merriam-webster.com/sentences/compared%20to)
+
+[Stackexchange](https://ell.stackexchange.com/questions/325358/comparatives-in-comparison-to-compared-to#:~:text=The%20answerer%20says%3A%20%22It%20is,to%20or%20simply%20compared%20to%22.)
+
+
+
 ## avoid using `very`
 
 For example, `very effective` can be replaced with `highly effective`. 
