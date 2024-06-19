@@ -13,6 +13,11 @@
 
 `Less` is sometimes used with a plural countable noun (e.g., less cars), particularly in conversation. However, this is grammatically incorrect.
 
+## use `(see Section 3)` or `(details in Section 3)` for forward reference.
+
+Note that 
+"cf." is not the appropriate abbreviation for referring to details in a specific section. "cf." stands for "confer" in Latin, meaning "compare" or "consult," and is used to direct the reader to other material for comparison, not for additional details.
+
 ## It is correct to use either `positive` or `comparative` form with `compared to` 
 
 For example, 
