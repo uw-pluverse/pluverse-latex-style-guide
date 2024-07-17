@@ -1,4 +1,4 @@
-(in progress of restrucing the guide)
+(in progress of restructuring the guide)
 
 # Tools, Files and Formats
 
