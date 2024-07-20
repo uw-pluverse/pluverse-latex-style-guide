@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+set -o nounset
+
+if [[ "$#" != 1 ]] ; then
+    echo "$0 <commit message>"
+    exit 1
+fi 
+
+# Find all .tex files in the current directory
+echo "Removing trailing whitespaces for .tex files"
+find . -type f -name "*.tex" | while read file; do
+  # Remove trailing whitespaces from the current file
+  sed -i '' -e 's/[[:space:]]*$//' "$file" || exit 1
+done
+echo "All .tex files have been processed."
+
+git commit -am "${1}" || exit 1
+
+git pull || exit 1
+
+git push || exit 1
