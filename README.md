@@ -50,7 +50,11 @@ $ ./update-pluverse-macros.sh
 
 Use [this website](https://capitalizemytitle.com/style/APA/) to check whether your title conforms. Note that this rule applies to paper titles, subtitles, and all (sub)section titles.
 
+### Use \emph{} to emphasize a text, other than \textit.
 
+- Purpose: This command is used to emphasize text. It is semantically meaningful and is intended to emphasize text in a context-sensitive way.
+-	Usage: The text inside the braces {} will be emphasized.
+-	Behavior: The \emph command is context-sensitive. If used inside already emphasized text (e.g., inside another \emph), it will typically de-emphasize the text (e.g., change it back to the normal style).
 
 ### Use '~' between the words and '\cite', and '\ref'.
 
