@@ -44,6 +44,9 @@ For example,
 [Stackexchange](https://ell.stackexchange.com/questions/325358/comparatives-in-comparison-to-compared-to#:~:text=The%20answerer%20says%3A%20%22It%20is,to%20or%20simply%20compared%20to%22.)
 
 
+## avoid using `try`, use `attempt`, `strive`, etc.
+
+`Try` is an informal word.
 
 ## avoid using `very`
 
