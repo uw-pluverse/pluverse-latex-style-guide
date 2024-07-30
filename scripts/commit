@@ -12,7 +12,11 @@ fi
 echo "Removing trailing whitespaces for .tex files"
 find . -type f -name "*.tex" | while read file; do
   # Remove trailing whitespaces from the current file
-  sed -i '' -e 's/[[:space:]]*$//' "$file" || exit 1
+  if [ "$(uname)" = "Darwin" ]; then
+    sed -i '' -e 's/[[:space:]]*$//' "${file}" || exit 1
+  else
+    sed -i -e 's/[[:space:]]*$//' "${file}" || exit 1
+  fi
 done
 echo "All .tex files have been processed."
 
