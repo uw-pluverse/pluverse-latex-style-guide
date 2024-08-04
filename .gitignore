@@ -1,1 +1,9 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
+
+main.aux
+main.bbl
+main.blg
+main.log
+main.out
+main.pdf
+main.synctex.gz
