@@ -1,5 +1,52 @@
 (in progress of restructuring the guide)
 
+# How to install and update this project in your Latex project
+
+
+### Installing the project 
+
+The recommended way is to add this project as a submodule of your git project. In shell,
+enter the directory of your git respository, and type 
+
+```
+git submodule add git@github.com:uw-pluverse/pluverse-latex-style-guide.git
+```
+
+### Cloning your project with submodules
+
+To clone a Git repository along with all its submodules, 
+you can use the `--recurse-submodules` flag with the `git clone` command. 
+This ensures that all submodules are initialized 
+and updated to match the versions specified in the superproject.
+
+Here's the command:
+
+```sh
+git clone --recurse-submodules <repository_url>
+```
+
+Replace `<repository_url>` with the URL of the repository you want to clone.
+
+### Cloning submodules alone
+
+If you have already cloned a repository without its submodules, you can initialize and update the submodules separately using the following commands:
+
+```sh
+git submodule update --init --recursive
+```
+
+This will initialize, fetch, and checkout the submodules.
+
+
+### Updating submodules
+
+Update the submodules to the latest commit from the upstream repository (if the submodule repository has new commits):
+
+```
+git submodule update --remote --merge
+```
+
+
 # Tools, Files and Formats
 
 ### Use a git repository for collaboration.
