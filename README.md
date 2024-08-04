@@ -1,9 +1,9 @@
 (in progress of restructuring the guide)
 
-# How to install and update this project in your Latex project
+# How to install and use this project
 
 
-### Installing the project 
+### Installing this project
 
 The recommended way is to add this project as a submodule of your git project. In shell,
 enter the directory of your git respository, and type 
