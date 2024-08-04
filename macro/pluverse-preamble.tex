@@ -19,6 +19,8 @@
 \usepackage{url}
 \usepackage{xspace}
 \usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{colortbl}
 
 \lstset{
   language=C,
@@ -62,6 +64,11 @@
 
 
 
+\definecolor{lightpink}{HTML}{FFB4ED}
+\definecolor{lightyellow}{HTML}{FEFE62}
+
+
+
 % Comment
 \newcommand{\cmt}[1]{\textit{\textcolor{red}{\footnotesize CMT: #1}}}
 % Quote and comment.
@@ -97,9 +104,15 @@
 \newcommand{\qvictor}[2]{\victor{#1}{\textcolor{violet}{~#2}}}
 
 \newcommand{\zy}[1]{\mytodogreen{[XXX:#1]}}
-\newcommand{\mx}[1]{\mytodoorange{[name:#1]}}
+\newcommand{\mx}[1]{\mytodoorange{[Max:#1]}}
 
 
+\newcounter{FindingCounter}
+\newcommand{\finding}[1]{
+	\begin{tcolorbox}
+		\textbf{RQ\refstepcounter{FindingCounter}\theFindingCounter}: #1
+	\end{tcolorbox}
+}
 
 
 
@@ -107,6 +120,7 @@
   \vspace*{0.04cm}
   \noindent \textit{\textbf{#1.}}\quad
 }
+
 \newcommand{\mycode}[1]{\texttt{#1}\xspace}
 
 \newcommand{\projectname}[1]{\textsf{#1}\xspace}
