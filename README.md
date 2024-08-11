@@ -87,7 +87,7 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 
 - Easy to identify the entry of the tex project.
 
-### Install Pluverse macro files
+### [Deprecated] Install Pluverse macro files
 
 - Enter your latex directory, and run the following command
 
