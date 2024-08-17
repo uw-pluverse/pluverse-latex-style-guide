@@ -22,6 +22,6 @@ echo "All .tex files have been processed."
 
 git commit -am "${1}" || exit 1
 
-git pull || exit 1
+git pull --rebase || exit 1
 
 git push || exit 1
