@@ -534,3 +534,35 @@ Similarly, instead of writing `1 apple a day is good for your body`, you should 
 Use `\protect` before the function macro, e.g., `\caption{\protect\Fn my function}`
 
 See [here](https://tex.stackexchange.com/questions/291911/how-can-i-use-an-algorithm2e-function-macro-inside-an-algorithm2e-caption)
+
+# Pluverse Specifics
+
+### Using Commenting Macros
+
+The `pluverse-preamble.tex` file provides commenting macros, such as `\cn{}`. When using these macros, ensure that each macro begins on a new line and that the closing parenthesis is followed by another new line. If your comment spans multiple lines, make sure to use indentation within the macro for clarity.
+
+For example, the following adheres to the recommended style:
+
+```tex
+\cn{This is a one-line comment.}
+```
+
+```tex
+\cn{This is a multi-line comment.
+    line 2
+    line 3
+}
+```
+
+We recommend this style because it makes it easier to comment out or remove these macros. For instance, in the following LaTeX code, it is difficult to remove the comment macros cleanly:
+
+```tex
+Main text here. \cn{My comment is embedded here, and it is not easy to delete.} Main text here.
+```
+
+This example demonstrates a similar issue:
+
+```tex
+Main text here. \cn{My comment spans two lines
+} Main text here.
+```
