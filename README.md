@@ -549,8 +549,8 @@ For example, the following adheres to the recommended style:
 
 ```tex
 \cn{This is a multi-line comment.
-    line 2
-    line 3
+    line 2 % Note the indentation here to highlight the current line is a comment.
+    line 3 % Note the indentation here to highlight the current line is a comment.
 }
 ```
 
@@ -566,3 +566,32 @@ This example demonstrates a similar issue:
 Main text here. \cn{My comment spans two lines
 } Main text here.
 ```
+
+#### Resolving Comments
+
+If you receive a comment from a reviewer and you address it,
+then do not delete the comment but **leave another comment \YourCommentMacro{done}**.
+Doing this can notify your reviewer of your response. If the reviewer
+feels that their question is well addressed, the reviewer will
+comment out the macro.
+
+For example, assume I am a reviewer and leave the following comment
+
+```tex
+\cn{My comment here.}
+```
+
+Then you address my comment and leave a `done` comment
+
+```text
+\cn{My comment here.}
+\victor{done}
+```
+
+If I feel my question is addressed, I will simply comment out all comment macros like the following
+
+```tex
+%\cn{My comment here.}
+%\victor{done}
+```
+
