@@ -112,6 +112,7 @@
 \newcommand{\reducedstrut}{\vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
 \newcommand{\LeanColorBox}[2]{
 	\begingroup
+	\unskip % It seems that the colorbox introduces an extra whitespace before the text. We need to delete the space.
 	\setlength{\fboxsep}{0pt}%
 	\colorbox{#1}{\reducedstrut#2\/}%
 	\endgroup
