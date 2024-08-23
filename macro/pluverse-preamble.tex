@@ -63,25 +63,37 @@
 % Coloring for ColorBlindness
 % https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
 % Here are the colors from the Paul Tol color palette.
-\definecolor{BlindColorOne}{HTML}{332288}
-\definecolor{BlindColorTwo}{HTML}{117733} % green
-\definecolor{BlindColorThree}{HTML}{44AA99}
-\definecolor{BlindColorFour}{HTML}{88CCEE}
-\definecolor{BlindColorFive}{HTML}{DDCC77}
-\definecolor{BlindColorSix}{HTML}{CC6677} % light red
-\definecolor{BlindColorSeven}{HTML}{AA4499}
-\definecolor{BlindColorEight}{HTML}{882255}
+\definecolor{BlindColorTolOne}{HTML}{332288}
+\definecolor{BlindColorTolTwo}{HTML}{117733} % green
+\definecolor{BlindColorTolThree}{HTML}{44AA99}
+\definecolor{BlindColorTolFour}{HTML}{88CCEE}
+\definecolor{BlindColorTolFive}{HTML}{DDCC77}
+\definecolor{BlindColorTolSix}{HTML}{CC6677} % light red
+\definecolor{BlindColorTolSeven}{HTML}{AA4499}
+\definecolor{BlindColorTolEight}{HTML}{882255}
+
+
+
+%https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
+\definecolor{BlindColorWongOne}{HTML}{000000} % black
+\definecolor{BlindColorWongTwo}{HTML}{E69F00}
+\definecolor{BlindColorWongThree}{HTML}{56B4E9}
+\definecolor{BlindColorWongFour}{HTML}{009E73}
+\definecolor{BlindColorWongFive}{HTML}{F0E442}
+\definecolor{BlindColorWongSix}{HTML}{0072B2} % blue
+\definecolor{BlindColorWongSeven}{HTML}{D55E00}
+\definecolor{BlindColorWongEight}{HTML}{CC79A7}
 % End of Coloring for ColorBlindness
 
 % Comment
-\newcommand{\cmt}[1]{\textit{\textcolor{BlindColorEight}{\footnotesize CMT: #1}}}
+\newcommand{\cmt}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}}}
 % Quote and comment.
-\newcommand{\qcmt}[2]{\textit{\textcolor{BlineColorEight}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qcmt}[2]{\textit{\textcolor{BlineColorTolEight}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
 
 % TODO..
-\newcommand{\todo}[1]{\textit{\textcolor{BlineColorEight}{\footnotesize TODO: #1}}}
+\newcommand{\todo}[1]{\textit{\textcolor{BlineColorTolEight}{\footnotesize TODO: #1}}}
 % Quote and todo.
-\newcommand{\qtodo}[2]{\textit{\textcolor{BlineColorEight}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qtodo}[2]{\textit{\textcolor{BlineColorTolEight}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
 
 % Leave comments with name
 \definecolor{mygreen}{HTML}{02818a}
@@ -99,14 +111,14 @@
 
 % Leave comments
 \newcommand{\NamedCommentTemplate}[3]{\colorbox{#1}{\textcolor{white}{\scriptsize #2:}}~\textcolor{#1}{$\lceil$#3$\rfloor$}}
-\newcommand{\cn}[1]{\NamedCommentTemplate{BlindColorSeven}{CN}{#1}}
+\newcommand{\cn}[1]{\NamedCommentTemplate{BlindColorTolSeven}{CN}{#1}}
 \newcommand{\qcn}[2]{\cn{#1}{\textcolor{violet}{~#2}}}
-\newcommand{\yiwen}[1]{\NamedCommentTemplate{BlindColorOne}{Yiwen}{#1}}
-\newcommand{\victor}[1]{\NamedCommentTemplate{BlindColorTwo}{Victor}{#1}}
+\newcommand{\yiwen}[1]{\NamedCommentTemplate{BlindColorTolOne}{Yiwen}{#1}}
+\newcommand{\victor}[1]{\NamedCommentTemplate{BlindColorTolTwo}{Victor}{#1}}
 \newcommand{\qvictor}[2]{\victor{#1}{\textcolor{violet}{~#2}}}
-\newcommand{\zy}[1]{\NamedCommentTemplate{BlindColorThree}{Zhenyang}{#1}}
-\newcommand{\mx}[1]{\NamedCommentTemplate{BlindColorSix}{Max}{#1}}
-\newcommand{\yr}[1]{\NamedCommentTemplate{BlindColorFive}{Yiran}{#1}}
+\newcommand{\zy}[1]{\NamedCommentTemplate{BlindColorTolThree}{Zhenyang}{#1}}
+\newcommand{\mx}[1]{\NamedCommentTemplate{BlindColorTolSix}{Max}{#1}}
+\newcommand{\yr}[1]{\NamedCommentTemplate{BlindColorTolFive}{Yiran}{#1}}
 
 \newcommand{\verticalline}{\unskip\ \vrule\ \ \ }
 \newcommand{\reducedstrut}{\vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
