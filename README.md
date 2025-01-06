@@ -464,6 +464,15 @@ For example,
 
 `Try` is an informal word.
 
+### avoid using `significantly` if no statistical significance test is not done
+
+You can use `substantially` if no significance test is done.
+
+### avoid using pie charts, use bar charts
+
+Bar charts are generally considered better than pie charts for several reasons (such as ease of comparison, precision, and handling complexity), 
+particularly when it comes to presenting and interpreting data effectively:
+
 ### avoid using `very`
 
 For example, `very effective` can be replaced with `highly effective`. 
