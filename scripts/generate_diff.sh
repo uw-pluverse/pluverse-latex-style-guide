@@ -19,6 +19,7 @@ set -o errexit
 
 if [[ "$#" != 2 ]] ; then
     echo "Usage: $0 <old main tex file> <new main tex file>"
+    echo "Usage: usuaully these two tex files should be in two folders"
     exit
 fi
 
@@ -43,10 +44,10 @@ latexpand "${OLD_MAIN_TEX_NAME}" -o "${OLD_TMP_TEX_FILE}"
 popd
 
 pushd "${NEW_MAIN_DIR}"
-# do not diff table/figure/algorithm, since latexdiff cannot handle the properly.
-latexpand --config="PICTUREENV=(?:picture|DIFnomarkup|algorithm|tabular|subfigure)[\w\d*@]*" "${NEW_MAIN_TEX_NAME}" -o "${NEW_TMP_TEX_FILE}"
+latexpand "${NEW_MAIN_TEX_NAME}" -o "${NEW_TMP_TEX_FILE}"
 popd
 
-latexdiff "${OLD_TMP_TEX_FILE}" "${NEW_TMP_TEX_FILE}" > "${OUTPUT_PATH}"
+# do not diff table/figure/algorithm, since latexdiff cannot handle the properly.
+latexdiff --config="PICTUREENV=(?:picture|DIFnomarkup|algorithm|tabular|subfigure)[\w\d*@]*" "${OLD_TMP_TEX_FILE}" "${NEW_TMP_TEX_FILE}" > "${OUTPUT_PATH}"
 
 pdflatex -synctex=1 -interaction=nonstopmode "${OUTPUT_PATH}"
