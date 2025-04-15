@@ -306,6 +306,20 @@ Avoid the citation from arxiv, if possible.
 
 You should not cite any papers in the `Abstract` section.
 
+### Cite URLs
+
+Use `@misc`. Here is an example.
+
+```tex
+@misc{cisco-bug,
+  author = {The Hacker News},
+  title = {{Critical Flaw in Cisco Secure Email and Web Manager Allows Unauthenticated Remote Code Execution}},
+  howpublished = {\url{https://thehackernews.com/2022/06/critical-flaw-in-cisco-secure-email-and.html}},
+  note = {Accessed: 2025-04-15},
+  year = 2022,
+}
+```
+
 ### Use macros for constants
 
 If you have some numbers, or string literals (e.g., functions) used throughout your paper, create a macro, and use that macro instead.
