@@ -1,0 +1,142 @@
+\documentclass{article}
+\input{../macro/pluverse-preamble.tex}
+
+\newcommand{\mt}[1]{%
+    \tikz[overlay,remember picture,baseline] \coordinate (#1) at (0,0) {};}
+
+\newcommand{\verticalline}{\unskip\ \vrule\ \ \ }
+
+%the following should be copied into your preamble somewhere.
+\definecolor{deepRed}{HTML}{D81B60}
+\definecolor{deepBlue}{HTML}{1E88E5}
+\definecolor{deepOrange}{HTML}{FFC107}
+
+\newcommand{\highlightGreen}[2]{%
+    \draw[deepBlue,line width=8pt,opacity=0.3]%
+    ([yshift=2pt]#1) -- ([yshift=2pt]#2);%
+}
+
+\newcommand{\highlightRed}[2]{%
+    \draw[deepRed,line width=8pt,opacity=0.3]%
+    ([yshift=2pt]#1) -- ([yshift=2pt]#2);%
+}
+
+\newcommand{\highlightOrange}[2]{%
+    \draw[deepOrange,line width=8pt,opacity=0.3]%
+    ([yshift=2pt]#1) -- ([yshift=2pt]#2);%
+}
+
+\newcommand{\highlightGray}[2]{%
+    \draw[gray,line width=8pt,opacity=0.7]%
+    ([yshift=2pt]#1) -- ([yshift=2pt]#2);%
+}
+
+\newcommand{\highlight}[2][yellow]{%
+    \tikz[baseline=(X.base)]%
+    \node[fill=#1!30, rounded corners=0pt, inner sep=1pt, outer sep=0pt](X){#2};%
+}
+
+\newcommand{\highlightnarrow}[2]{%
+    \tikz[baseline=(X.base), overlay, remember picture]%
+    \node[anchor=base] (X) {#2};
+    \draw[fill=#1!30, rounded corners=0pt, inner sep=0pt] ([yshift=2pt,xshift=-1pt]X.north west) -- ([yshift=2pt,xshift=1pt]X.north east) -- ([yshift=-1pt,xshift=1pt]X.south east) -- ([yshift=-1pt,xshift=-1pt]X.south west) -- cycle;%
+}
+
+
+\input{../macro/pluverse-preamble-end.tex}
+
+\begin{document}
+\begin{figure*}[ht]
+    \centering
+    \begin{subfigure}[b]{0.50\linewidth}
+        %    \begin{minipage}{.23\linewidth}
+            \begin{lstlisting}[language=C,  escapechar=@, numbers=left,
+                numbersep=1em, commentstyle=\color{darkgray},
+                xleftmargin=1em, tabsize=1]
+#include <stdint.h>
+uint8_t g;
+int16_t div(int16_t a, int16_t b) {
+    return b == 0 ? a : a / b;
+}
+int64_t id(a) { return a; }
+int8_t fn(a) {
+    uint8_t b;
+    for (;;) {
+        uint16_t c = 65532UL;
+        id(b |= g);
+        if (div(c,
+        div(0x2FAAL, 65535UL)))
+        @\mt{1s}@b |= g;@\mt{1e}@ @\label{fig:firstline}@ @\label{subfig:motivation:our_variant:assignment1}@
+        @\mt{2s}@else {@\mt{2e}@
+            a &= 1L;
+            @\mt{3s}@}@\mt{3e}@
+        @\mt{4s}@b |= g;@\mt{4e}@ @\label{line:secondline}@ @\label{subfig:motivation:our_variant:assignment2}@
+    }
+}
+int main() { fn(0); }
+            \end{lstlisting}
+            %    \end{minipage}
+        \caption{\emph{Variant} by .}
+        \label{subfig:motivation:our_variant}
+    \end{subfigure}
+    \hfil
+    \verticalline
+    \begin{subfigure}[b]{0.45\linewidth}
+\begin{lstlisting}[language=C,  escapechar=@, numbers=none,
+    numbersep=1em, commentstyle=\color{darkgray},
+    xleftmargin=1em, tabsize=1]
+    ......
+    int8_t fn() {
+        ......
+    }
+    ......
+    int main() {
+        ......
+        @\mt{5s}@fn@\mt{5e}@;
+    }
+\end{lstlisting}
+\caption{\emph{Seed} by .}
+\label{subfig:motivation:dd_seed}
+%
+%
+\vspace{1ex}
+%
+\begin{lstlisting}[language=C,  escapechar=@, numbers=none,
+    numbersep=1em, commentstyle=\color{darkgray},
+    xleftmargin=1em, tabsize=1]
+    ......
+    int8_t fn() {
+        ......
+    }
+    ......
+    int main() {
+        ......
+        @\mt{6s}@fn()@\mt{6e}@;
+% this places two tags, 6s and 6e
+% note that the command mt
+% needs to be escapted
+    }
+\end{lstlisting}
+\caption{\emph{Variant} by .}
+\label{subfig:motivation:dd_variant}
+\end{subfigure}
+
+
+\begin{tikzpicture}[remember picture, overlay]
+    \highlightGreen{1s}{1e}
+%    the above highlight the code between 1s and 1e.
+%    cannot across lines
+    \highlightGreen{2s}{2e}
+    \highlightGreen{3s}{3e}
+    \highlightGreen{4s}{4e}
+    \highlightGreen{5s}{5e}
+    \highlightGreen{6s}{6e}
+\end{tikzpicture}
+    \caption{
+        XXX are highlighted in \highlight[deepBlue]{blue}.
+        Read the comments to understand how this works.
+}
+\label{fig:code_llvm_21467_motivation_developer}
+
+\end{figure*}
+\end{document}
