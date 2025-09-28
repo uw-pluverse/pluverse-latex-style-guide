@@ -66,6 +66,13 @@ git submodule update --remote --merge
 
 - You can use TexStudio, vim or other editors locally and push you changes to the remote git repository.
 
+### Naming convention for your git repository
+
+- `paper-<project name>` if the project is for a paper.
+- `thesis-<your first or full name>` if the project is for your thesis.
+
+Note that the naming convention is mainly to help the advisor manage multiple paper repositories. 
+
 ### Use a grammar checker.
 
 If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a/282571.
@@ -86,18 +93,6 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 ### Have a main.tex file
 
 - Easy to identify the entry of the tex project.
-
-### [Deprecated] Install Pluverse macro files
-
-- Enter your latex directory, and run the following command
-
-```bash
-$ wget https://raw.githubusercontent.com/uw-pluverse/pluverse-latex-style-guide/master/macro/update-pluverse-macros.sh
-$ chmod +x update-pluverse-macros.sh
-$ ./update-pluverse-macros.sh
-```
-
-
 
 
 
