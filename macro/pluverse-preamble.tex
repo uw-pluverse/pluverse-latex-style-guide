@@ -30,7 +30,13 @@
   language=C,
   tabsize=1,
   %line numbers....
-  escapeinside={(*@}{@*)},
+  # If you want to use Latex commands inside lstlisting, and the escapte char % does not
+  # work for your specific lstlisting environment, then you should define a different
+  # escapechar or define escapeinside in your specific environment. The default
+  # escape char should be % be default. 
+  # This is subject to change. Let's how this will work in the future.
+  % escapeinside={(*@}{@*)},
+  escapechar=\%,
   basicstyle=\footnotesize\ttfamily,
   stringstyle=\color{blue},
   keywordstyle=\color{blue}\bfseries,
