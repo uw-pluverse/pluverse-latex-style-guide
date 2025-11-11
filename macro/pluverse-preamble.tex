@@ -29,13 +29,18 @@
 \lstset{
   language=C,
   tabsize=1,
-  %line numbers....
-  # If you want to use Latex commands inside lstlisting, and the escapte char % does not
-  # work for your specific lstlisting environment, then you should define a different
-  # escapechar or define escapeinside in your specific environment. The default
-  # escape char should be % be default. 
-  # This is subject to change. Let's how this will work in the future.
+  % ==== Line Number ====
+  % numbers=left/right/none,
+  % stepnuber=1/2/5/10,
+  %
+  % ==== Using Latex Commands Inside ====
+  % If you want to use Latex commands inside lstlisting, and the escapte char % does not
+  % work for your specific lstlisting environment, then you should define a different
+  % escapechar or define escapeinside in your specific environment. The default
+  % escape char should be % be default. 
+  % This is subject to change. Let's how this will work in the future.
   % escapeinside={(*@}{@*)},
+  % ==== Font ====
   escapechar=\%,
   basicstyle=\footnotesize\ttfamily,
   stringstyle=\color{blue},
