@@ -64,7 +64,7 @@ git submodule update --remote --merge
 
 - Git is much better at tracking changes than overleaf.
 
-- You can use Antigravity IDE+Latex Workshop, VS Code+Latex Workshop, TexStudio, vim or other editors locally and push you changes to the remote git repository.
+- You can use Antigravity IDE+Latex Workshop+TexLab, VS Code+Latex Workshop, TexStudio, vim or other editors locally and push you changes to the remote git repository.
 
 ### Naming convention for your git repository
 
