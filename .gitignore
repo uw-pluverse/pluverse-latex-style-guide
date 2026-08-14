@@ -19,3 +19,10 @@ template/*.pdf
 template/*.synctex.gz
 template/*.fls
 template/*.fdb_latexmk
+
+# pluverse-format.py backups
+.pluverse-format-backups/
+
+# Python bytecode from presubmit.sh
+__pycache__/
+*.pyc

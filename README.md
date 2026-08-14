@@ -348,7 +348,7 @@ You should not cite any papers in the `Abstract` section.
 
 If you introduce an acronym in the `Abstract`, you **must** re-introduce it the first time it appears in the main body of the paper (usually the `Introduction`). 
 
-This is because the `Abstract` is treated as a completely independent, standalone document in academic publishing. It is often syndicated separately to databases (like IEEE Xplore, ACM Digital Library, or Google Scholar). Therefore, readers starting the actual paper from the `Introduction` will not have the context of any acronyms defined solely in the `Abstract`.
+This is because the `Abstract` and the main body of the paper are treated as two formally distinct texts. While a reader *can* read the abstract immediately before the introduction, many readers skip the abstract and jump straight into the `Introduction`, or they may read the abstract days before reading the full paper. Because the main text must be entirely self-contained and comprehensible on its own, you cannot assume the reader remembers (or has read) definitions established in the abstract.
 
 ### Cite URLs
 
