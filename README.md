@@ -85,6 +85,49 @@ Keep a line short. I would recommend to break a line at 60. The benefits of doin
 - Better bi-directional mapping between the output pdf file and the latex source.
 - Friendly to the editor. No need to use the editor's wrapping functionality.
 
+### Use `bin/pluverse-format.py` to enforce the line width
+
+`bin/pluverse-format.py` wraps over-long lines in `.tex` files. It differs from a
+conventional formatter in that it **only ever splits a line, and never joins or
+reflows one**. A line that is already acceptable is reproduced byte for byte, so
+reformatting an existing paper yields the smallest possible diff. Lines are not
+padded out to an even length; a three-word line is perfectly fine.
+
+```sh
+bin/pluverse-format.py main.tex sections/   # rewrite in place, after backing up
+bin/pluverse-format.py --diff  sections/    # preview without writing
+bin/pluverse-format.py --check sections/    # exit 1 if anything is unformatted
+bin/pluverse-format.py --restore            # undo the most recent run
+```
+
+Rules, in priority order:
+
+1. **Every sentence starts on a new line**, no matter how short the sentence is.
+2. A line longer than 80 columns is broken, preferring a clause boundary (a
+   comma, or a word such as `which`, `because`, `and`).
+3. A line under 80 columns holding a single sentence is left untouched.
+
+Formatting can never change the typeset output, because a break is only ever
+placed on whitespace that already exists in the source; in LaTeX a newline and a
+space are the same token. Nothing is broken at a position that would have to
+*insert* a space, which is what protects `foo---bar`.
+
+**Only running text is formatted.** A line that opens with a LaTeX command or
+directive is left exactly as written, even when it is over-long, because its
+argument is code or a fixed label rather than prose. That covers definitions
+(`\newcommand`, `\def`), package and document setup (`\usepackage`, `\lstset`),
+environment delimiters (`\begin`, `\end`), structural and front-matter commands
+(`\section`, `\title`, `\author`), file inclusion and anchors (`\input`,
+`\label`), TikZ paths (`\draw`, `\node`), and `% !TeX` editor directives.
+Verbatim-like environments and `\verb` arguments are likewise untouched.
+
+A command that *does* carry running text is still formatted: `\item ...`,
+`\caption{...}`, `\hl{...}` and prose that merely begins with `\Cref{...}` all
+wrap normally. Lines that cannot be shortened safely, such as a long `\url`, are
+left long and reported at the end of a run.
+
+Use `% pluverse-format: off` and `% pluverse-format: on` to exclude a region.
+
 ### Decompose a single BIG .tex file into multiple .tex files
 
 - Friendly to version control system. Easy to diff. Minimize merge conflicts.
@@ -300,6 +343,12 @@ Avoid the citation from arxiv, if possible.
 ### No citations in `abstract`
 
 You should not cite any papers in the `Abstract` section.
+
+### Introduce acronyms in both abstract and introduction
+
+If you introduce an acronym in the `Abstract`, you **must** re-introduce it the first time it appears in the main body of the paper (usually the `Introduction`). 
+
+This is because the `Abstract` is treated as a completely independent, standalone document in academic publishing. It is often syndicated separately to databases (like IEEE Xplore, ACM Digital Library, or Google Scholar). Therefore, readers starting the actual paper from the `Introduction` will not have the context of any acronyms defined solely in the `Abstract`.
 
 ### Cite URLs
 
