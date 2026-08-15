@@ -319,6 +319,66 @@ class HardClauseSplitTests(unittest.TestCase):
         self.assertNotEqual(lines[0], "For instance,")
 
 
+
+class AlignmentTests(unittest.TestCase):
+    """Table and matrix rows are column-aligned code, not prose."""
+
+    ROW = (
+        "\\textbf{Native Kind} & \\mycode{LPAREN} & \\mycode{LBRACE} & "
+        "\\mycode{INT} & \\mycode{IDENT} & \\mycode{ASSIGN} & \\mycode{SEMI} \\\\\n"
+    )
+
+    def test_tabular_row_is_never_broken(self):
+        text = (
+            "\\begin{tabular}{lccccccc}\n"
+            "\\toprule\n" + self.ROW + "\\bottomrule\n"
+            "\\end{tabular}\n"
+        )
+        self.assertEqual(fmt(text), text)
+
+    def test_array_row_is_never_broken(self):
+        text = "\\begin{array}{cc}\n" + self.ROW + "\\end{array}\n"
+        self.assertEqual(fmt(text), text)
+
+    def test_alignment_row_outside_a_known_environment_is_not_broken(self):
+        # An unescaped '&' is only legal inside an alignment.
+        self.assertTrue(pf.has_alignment_separator(self.ROW))
+        self.assertEqual(fmt(self.ROW), self.ROW)
+
+    def test_escaped_ampersand_in_prose_is_not_an_alignment(self):
+        text = (
+            "The tool handles input \\& output redirection and it continues to "
+            "work correctly across every platform we tested.\n"
+        )
+        self.assertFalse(pf.has_alignment_separator(text))
+        self.assertGreater(len(fmt(text).splitlines()), 1)
+
+    def test_ampersand_inside_a_comment_is_not_an_alignment(self):
+        text = (
+            "This sentence is long enough to need wrapping somewhere along its "
+            "length. % a & b\n"
+        )
+        self.assertFalse(pf.has_alignment_separator(text))
+
+    def test_formatting_resumes_after_the_table(self):
+        text = (
+            "\\begin{tabular}{cc}\n" + self.ROW + "\\end{tabular}\n"
+            "Real prose. Another sentence.\n"
+        )
+        result = fmt(text)
+        self.assertIn(self.ROW, result)
+        self.assertIn("Real prose.\nAnother sentence.\n", result)
+
+    def test_prose_inside_a_table_environment_is_left_alone(self):
+        text = (
+            "\\begin{tabular}{p{5cm}}\n"
+            "A very long caption cell that runs well past the eighty column "
+            "limit without any ampersand at all \\\\\n"
+            "\\end{tabular}\n"
+        )
+        self.assertEqual(fmt(text), text)
+
+
 class TypesettingSafetyTests(unittest.TestCase):
     def test_em_dash_without_spaces_is_never_broken(self):
         text = (
@@ -623,7 +683,9 @@ class BuildVerificationTests(unittest.TestCase):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def verification(self):
-        return pf.BuildVerification(main=self.tmp / "main.tex", dpi=150)
+        return pf.BuildVerification(
+            main=self.tmp / "main.tex", dpi=150, outdir=self.tmp / "build"
+        )
 
     def test_rendered_pdf_is_unchanged(self):
         code = pf.main(["main.tex", "-q", "--verify", "main.tex"])
@@ -633,8 +695,15 @@ class BuildVerificationTests(unittest.TestCase):
         )
 
     def test_pdf_path_follows_the_main_file(self):
-        self.assertEqual(self.verification().pdf, self.tmp / "main.pdf")
+        self.assertEqual(self.verification().pdf, self.tmp / "build" / "main.pdf")
         self.assertEqual(self.verification().directory, self.tmp)
+
+    def test_the_authors_own_pdf_is_never_written(self):
+        """Artifacts go to a private directory, so an editor build is safe."""
+        pf.build_document(self.verification())
+        self.assertTrue((self.tmp / "build" / "main.pdf").is_file())
+        self.assertFalse((self.tmp / "main.pdf").exists())
+        self.assertFalse((self.tmp / "main.aux").exists())
 
     def test_cross_references_converge_before_the_reference_is_taken(self):
         """A one-pass build renders '??' and would look like a false change."""
@@ -644,7 +713,7 @@ class BuildVerificationTests(unittest.TestCase):
         # Building again from the converged state must reproduce it exactly.
         pf.build_document(self.verification())
         identical, _ = pf.compare_pdfs(
-            reference.copy, self.tmp / "main.pdf", 150, scratch
+            reference.copy, self.verification().pdf, 150, scratch
         )
         self.assertTrue(identical, "repeated builds must be deterministic")
 
@@ -659,7 +728,7 @@ class BuildVerificationTests(unittest.TestCase):
         )
         pf.build_document(self.verification())
         identical, detail = pf.compare_pdfs(
-            reference.copy, self.tmp / "main.pdf", 150, scratch
+            reference.copy, self.verification().pdf, 150, scratch
         )
         self.assertFalse(identical, "a changed document must be detected")
         self.assertIn("render differently", detail)
@@ -703,7 +772,7 @@ class BuildVerificationTests(unittest.TestCase):
         scratch = self.tmp / "scratch"
         scratch.mkdir()
         pf.build_document(self.verification())
-        pdf = self.tmp / "main.pdf"
+        pdf = self.verification().pdf
         real_which = shutil.which
         try:
             shutil.which = lambda n, *a, **k: (
@@ -714,6 +783,35 @@ class BuildVerificationTests(unittest.TestCase):
             shutil.which = real_which
         self.assertTrue(identical)
         self.assertIn("layout NOT checked", detail)
+
+
+    def test_verification_survives_a_competing_build(self):
+        """An editor rebuilding in place must not corrupt our verification.
+
+        Two builds sharing one directory interleave their writes to main.aux,
+        which is what made this fail before the build moved to a private
+        output directory.
+        """
+        import subprocess
+        import threading
+
+        stop = threading.Event()
+
+        def competitor():
+            while not stop.is_set():
+                subprocess.run(
+                    ["pdflatex", "-interaction=nonstopmode", "main.tex"],
+                    cwd=str(self.tmp), capture_output=True,
+                )
+
+        worker = threading.Thread(target=competitor, daemon=True)
+        worker.start()
+        try:
+            code = pf.main(["main.tex", "-q", "--verify", "main.tex"])
+        finally:
+            stop.set()
+            worker.join(timeout=60)
+        self.assertEqual(code, 0, "a competing build broke verification")
 
 
     def test_files_are_untouched_when_the_build_fails(self):
@@ -776,7 +874,9 @@ class BibliographyTests(unittest.TestCase):
         os.chdir(self.tmp)
         (self.tmp / "refs.bib").write_text(BIB, encoding="utf-8")
         (self.tmp / "main.tex").write_text(CITING_DOCUMENT, encoding="utf-8")
-        self.verification = pf.BuildVerification(main=self.tmp / "main.tex", dpi=150)
+        self.verification = pf.BuildVerification(
+            main=self.tmp / "main.tex", dpi=150, outdir=self.tmp / "build"
+        )
 
     def tearDown(self):
         import os
@@ -785,7 +885,7 @@ class BibliographyTests(unittest.TestCase):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def rendered_text(self) -> str:
-        return pf.extract_pdf_text(self.tmp / "main.pdf", self.tmp / "out.txt")
+        return pf.extract_pdf_text(self.verification.pdf, self.tmp / "out.txt")
 
     def test_citations_resolve_on_the_default_path(self):
         pf.build_document(self.verification)
@@ -813,7 +913,9 @@ class BibliographyTests(unittest.TestCase):
             "\\end{document}\n",
             encoding="utf-8",
         )
-        verification = pf.BuildVerification(main=self.tmp / "plain.tex", dpi=150)
+        verification = pf.BuildVerification(
+            main=self.tmp / "plain.tex", dpi=150, outdir=self.tmp / "build2"
+        )
         real_which = shutil.which
         try:
             shutil.which = lambda n, *a, **k: (
@@ -827,7 +929,71 @@ class BibliographyTests(unittest.TestCase):
     def test_formatting_a_cited_document_is_verified(self):
         code = pf.main(["main.tex", "-q", "--verify", "main.tex"])
         self.assertEqual(code, 0)
+        # main() builds into its own scratch directory and removes it, so
+        # rebuild here to inspect what the verified rendering looked like.
+        pf.build_document(self.verification)
         self.assertNotIn("[?]", self.rendered_text())
+
+
+
+class AtomicWriteTests(unittest.TestCase):
+    """An editor may read the file at any moment, so writes must be atomic."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_content_is_replaced(self):
+        path = self.tmp / "a.tex"
+        path.write_text("old\n", encoding="utf-8")
+        pf.write_atomically(path, "new\n")
+        self.assertEqual(path.read_text(), "new\n")
+
+    def test_the_file_is_swapped_in_rather_than_truncated(self):
+        """A rename changes the inode; writing in place does not.
+
+        This is what makes a concurrent reader safe: it sees the whole old
+        file or the whole new one, never a half-written document.
+        """
+        import os
+
+        path = self.tmp / "a.tex"
+        path.write_text("old\n", encoding="utf-8")
+        before = os.stat(path).st_ino
+        pf.write_atomically(path, "new content\n")
+        self.assertNotEqual(os.stat(path).st_ino, before, "file was written in place")
+
+    def test_no_temporary_file_is_left_behind(self):
+        path = self.tmp / "a.tex"
+        path.write_text("old\n", encoding="utf-8")
+        pf.write_atomically(path, "new\n")
+        leftovers = [p.name for p in self.tmp.iterdir() if p.name != "a.tex"]
+        self.assertEqual(leftovers, [])
+
+    def test_permissions_are_preserved(self):
+        import os
+
+        path = self.tmp / "a.tex"
+        path.write_text("old\n", encoding="utf-8")
+        os.chmod(path, 0o600)
+        pf.write_atomically(path, "new\n")
+        self.assertEqual(os.stat(path).st_mode & 0o777, 0o600)
+
+    def test_formatting_a_file_leaves_no_scratch_file(self):
+        path = self.tmp / "b.tex"
+        path.write_text("One sentence. Two sentences.\n", encoding="utf-8")
+        import os
+
+        cwd = Path.cwd()
+        os.chdir(self.tmp)
+        try:
+            pf.main([str(path), "-q", "--no-backup"])
+        finally:
+            os.chdir(cwd)
+        self.assertEqual(path.read_text(), "One sentence.\nTwo sentences.\n")
+        self.assertEqual([p.name for p in self.tmp.iterdir()], ["b.tex"])
 
 
 class CliTests(unittest.TestCase):

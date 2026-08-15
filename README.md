@@ -169,8 +169,15 @@ that the two renderings differ only where formatting made them differ:
 The `pdflatex` path is the fallback and follows the same sequence
 (`pdflatex -> bibtex -> pdflatex ...`).
 
-Note that verification rebuilds your PDF in place, so `main.pdf` is left as the
-build produced it.
+**You can keep your editor open while this runs.** The build writes every
+artifact into a private scratch directory, so your own `main.pdf` and `main.aux`
+are never touched, and the formatter's build cannot collide with the one your
+editor starts when it sees the file change. Editors that rebuild on save --
+Antigravity, LaTeX Workshop, TeXstudio -- otherwise share `main.aux` with the
+verification build; interleaved writes truncate it, and the next pass dies with
+`File ended while scanning use of \@newl@bel`. For the same reason the formatter
+replaces a file with an atomic rename, so an editor reading it mid-write sees
+either the old file or the new one, never a partial document.
 
 A build that does not actually regenerate the PDF would compare a file against
 itself and pass, so that case is reported as a failure rather than as a

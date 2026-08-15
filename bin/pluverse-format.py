@@ -30,6 +30,7 @@ import difflib
 import re
 import shutil
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -123,6 +124,21 @@ NOBREAK_LINE_COMMANDS = frozenset(
         "draw", "node", "path", "fill", "filldraw", "shade", "shadedraw",
         "clip", "coordinate", "tikz", "addplot", "addlegendentry", "pgfdeclare",
         "pgfmathsetmacro", "foreach",
+    }
+)
+
+# Rows of these environments are column-aligned code, not prose.  Breaking one
+# at an '&' is harmless to the output but destroys the alignment that makes the
+# source readable, so their bodies are left exactly as written.
+ALIGNMENT_ENVIRONMENTS = frozenset(
+    {
+        "tabular", "tabular*", "tabularx", "tabulary", "tabu", "longtabu",
+        "longtable", "supertabular", "xtabular", "tblr", "NiceTabular",
+        "array", "matrix", "bmatrix", "Bmatrix", "pmatrix", "vmatrix",
+        "Vmatrix", "smallmatrix", "cases", "dcases",
+        "align", "align*", "aligned", "alignat", "alignat*", "alignedat",
+        "gather", "gather*", "gathered", "split", "eqnarray", "eqnarray*",
+        "IEEEeqnarray", "IEEEeqnarray*",
     }
 )
 
@@ -717,6 +733,19 @@ def format_comment_line(indent: str, body: str, options: Options) -> list[str]:
 # --------------------------------------------------------------------------
 
 
+def has_alignment_separator(line: str) -> bool:
+    """Report whether the line carries an unescaped, non-comment '&'."""
+    comment_start, nobreak, _ = scan_line(line)
+    limit = len(line) if comment_start is None else comment_start
+    for index in range(limit):
+        if line[index] != "&":
+            continue
+        # '\&' is a literal ampersand; scan_line records it as a control symbol.
+        if not _overlaps(index, index + 1, nobreak):
+            return True
+    return False
+
+
 def is_directive_line(stripped: str) -> bool:
     """Report whether a line is LaTeX machinery rather than prose."""
     if EDITOR_DIRECTIVE_RE.match(stripped):
@@ -772,6 +801,7 @@ def format_text(text: str, options: Options) -> tuple[str, int, list[tuple[int, 
     unbreakable: list[tuple[int, str]] = []
 
     verbatim_stack: list[str] = []
+    alignment_stack: list[str] = []
     formatting_enabled = True
 
     for number, line in enumerate(lines, start=1):
@@ -785,14 +815,27 @@ def format_text(text: str, options: Options) -> tuple[str, int, list[tuple[int, 
         entering = verbatim_stack or any(
             kind == "begin" and name in VERBATIM_ENVIRONMENTS for kind, name in environments
         )
+        aligned = bool(alignment_stack) or any(
+            kind == "begin" and name in ALIGNMENT_ENVIRONMENTS for kind, name in environments
+        )
 
         for kind, name in environments:
             if kind == "begin" and name in VERBATIM_ENVIRONMENTS:
                 verbatim_stack.append(name)
             elif kind == "end" and verbatim_stack and verbatim_stack[-1] == name:
                 verbatim_stack.pop()
+            elif kind == "begin" and name in ALIGNMENT_ENVIRONMENTS:
+                alignment_stack.append(name)
+            elif kind == "end" and alignment_stack and alignment_stack[-1] == name:
+                alignment_stack.pop()
 
-        if entering or not formatting_enabled:
+        if entering or aligned or not formatting_enabled:
+            output.append(line)
+            continue
+
+        # A row of a table the environment tracking did not recognise: an
+        # unescaped '&' is only legal inside an alignment, so it marks one.
+        if has_alignment_separator(line):
             output.append(line)
             continue
 
@@ -924,13 +967,21 @@ class BuildVerification:
     """Everything needed to rebuild one document.
 
     The main file determines the rest: LaTeX names its output after the job
-    name, so ``main.tex`` always yields ``main.pdf``.  The build runs with the
-    main file's directory as the working directory, because pdflatex writes the
-    PDF into the *current* directory rather than beside the source.
+    name, so ``main.tex`` yields ``main.pdf``.  The build reads sources from the
+    main file's directory but writes every artifact into ``outdir``, a private
+    scratch directory.
+
+    Writing elsewhere matters when an editor rebuilds the document on save, as
+    LaTeX Workshop, TeXstudio and Antigravity all do.  Two builds sharing one
+    directory interleave their writes to ``main.aux``, and a half-written .aux
+    makes the next pass die with "File ended while scanning use of
+    \\@newl@bel".  A private output directory removes the shared state, and as a
+    bonus the author's own ``main.pdf`` is never overwritten.
     """
 
     main: Path
     dpi: int
+    outdir: Path
 
     @property
     def directory(self) -> Path:
@@ -938,7 +989,7 @@ class BuildVerification:
 
     @property
     def pdf(self) -> Path:
-        return self.main.with_suffix(".pdf")
+        return self.outdir / f"{self.main.stem}.pdf"
 
 
 # LaTeX resolves cross-references through the .aux file, so the first pass over
@@ -954,12 +1005,21 @@ def build_document(verification: BuildVerification) -> str:
 
     name = verification.main.name
 
-    def run(command: list[str]) -> None:
+    def run(command: list[str], cwd: Path | None = None, extra_paths: Path | None = None) -> None:
+        environment = None
+        if extra_paths is not None:
+            import os
+
+            environment = dict(os.environ)
+            for variable in ("BIBINPUTS", "BSTINPUTS", "TEXINPUTS"):
+                existing = environment.get(variable, "")
+                environment[variable] = f"{extra_paths}:{existing}"
         completed = subprocess.run(
             command,
-            cwd=str(verification.directory),
+            cwd=str(cwd or verification.directory),
             capture_output=True,
             text=True,
+            env=environment,
         )
         if completed.returncode != 0:
             output = (completed.stdout + completed.stderr).strip().splitlines()
@@ -970,15 +1030,23 @@ def build_document(verification: BuildVerification) -> str:
                 f"{' '.join(command)}\n  " + "\n  ".join(tail)
             )
 
+    verification.outdir.mkdir(parents=True, exist_ok=True)
+
     if shutil.which("latexmk"):
         # latexmk already iterates to a fixed point and runs bibtex/biber.
-        command = ["latexmk", "-pdf", "-interaction=nonstopmode", name]
+        command = [
+            "latexmk", "-pdf", "-interaction=nonstopmode",
+            f"-outdir={verification.outdir}", name,
+        ]
         run(command)
-        return " ".join(command)
+        return "latexmk -pdf -outdir=<private>"
 
     stem = verification.main.stem
-    command = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", name]
-    aux = verification.directory / f"{stem}.aux"
+    command = [
+        "pdflatex", "-interaction=nonstopmode", "-halt-on-error",
+        f"-output-directory={verification.outdir}", name,
+    ]
+    aux = verification.outdir / f"{stem}.aux"
     steps = ["pdflatex"]
 
     run(command)
@@ -1002,14 +1070,14 @@ def build_document(verification: BuildVerification) -> str:
 def run_bibliography_tool(verification: BuildVerification, run) -> str | None:
     """Run biber or bibtex if the document cites anything.  Returns the tool."""
     stem = verification.main.stem
-    directory = verification.directory
+    directory = verification.outdir
 
     # biblatex leaves a .bcf control file; the traditional path leaves
     # \citation entries in the .aux.
     if (directory / f"{stem}.bcf").is_file():
         if not shutil.which("biber"):
             return None
-        run(["biber", stem])
+        run(["biber", stem], cwd=directory)
         return "biber"
 
     aux = directory / f"{stem}.aux"
@@ -1020,7 +1088,9 @@ def run_bibliography_tool(verification: BuildVerification, run) -> str | None:
         return None
     if not shutil.which("bibtex"):
         return None
-    run(["bibtex", stem])
+    # bibtex reads the .aux from the output directory but must still find the
+    # .bib and .bst files, which live beside the sources.
+    run(["bibtex", stem], cwd=directory, extra_paths=verification.directory)
     return "bibtex"
 
 
@@ -1138,6 +1208,25 @@ def collect_tex_files(paths: list[str]) -> list[Path]:
             seen.add(resolved)
             unique.append(path)
     return unique
+
+
+def write_atomically(path: Path, text: str) -> None:
+    """Replace a file in one step, so no reader ever sees it half written.
+
+    An editor that rebuilds on change -- Antigravity, LaTeX Workshop -- may read
+    the file at any moment.  Writing in place would let it read a truncated
+    document; a rename is atomic, so it sees either the old file or the new one.
+    """
+    import os
+
+    temporary = path.with_name(f".{path.name}.pluverse-tmp")
+    try:
+        temporary.write_text(text, encoding="utf-8", newline="")
+        shutil.copystat(path, temporary)
+        os.replace(temporary, path)
+    except OSError:
+        temporary.unlink(missing_ok=True)
+        raise
 
 
 def process_file(path: Path, options: Options) -> FileResult:
@@ -1300,11 +1389,11 @@ def main(argv: list[str] | None = None) -> int:
         if main_tex.suffix != ".tex":
             print(f"error: {args.verify}: not a .tex file", file=sys.stderr)
             return 2
-        verification = BuildVerification(main=main_tex, dpi=args.verify_dpi)
-
-        import tempfile
-
         scratch = Path(tempfile.mkdtemp(prefix="pluverse-format-verify-"))
+        verification = BuildVerification(
+            main=main_tex, dpi=args.verify_dpi, outdir=scratch / "build"
+        )
+
         # Build the reference *before* touching anything: if the document does
         # not build to begin with, there is nothing to compare against and the
         # files must be left alone.
@@ -1317,7 +1406,7 @@ def main(argv: list[str] | None = None) -> int:
             shutil.rmtree(scratch, ignore_errors=True)
             return 2
         if not args.quiet:
-            print(f"reference PDF: {verification.pdf}\n")
+            print("reference PDF built in a private directory\n")
 
     backups = BackupSession(backup_root, enabled=args.backup and not dry_run)
 
@@ -1363,7 +1452,7 @@ def main(argv: list[str] | None = None) -> int:
 
         try:
             backups.save(path)
-            path.write_text(result.formatted, encoding="utf-8", newline="")
+            write_atomically(path, result.formatted)
         except OSError as error:
             print(f"error: {path}: {error}", file=sys.stderr)
             failures += 1
