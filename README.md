@@ -103,9 +103,19 @@ bin/pluverse-format.py --restore            # undo the most recent run
 Rules, in priority order:
 
 1. **Every sentence starts on a new line**, no matter how short the sentence is.
-2. A line longer than 80 columns is broken, preferring a clause boundary (a
-   comma, or a word such as `which`, `because`, `and`).
-3. A line under 80 columns holding a single sentence is left untouched.
+2. **Every clause of a sentence longer than 80 columns starts on a new line**;
+   whatever is still too long is then wrapped at the nearest safe whitespace.
+3. A line under 80 columns holding a single sentence is left untouched, so its
+   clauses stay together.
+
+A clause boundary is anchored on punctuation, never on a bare keyword: a
+semicolon or colon, a comma before a coordinator or relative pronoun (`, and`,
+`, which`), a comma before a participle (`, corrupting the ...`), the comma
+closing a leading subordinate clause (`Because ..., \proj must ...`), or the
+comma after a short introductory adverbial (`For instance, ...`). Commas that
+join coordinate adjectives (`A universal, language-agnostic scanner`) or sit
+inside a parenthetical (`(e.g., within comments)`) are not boundaries. Pass
+`--clause-split=fit` to break only as much as the width requires.
 
 Formatting can never change the typeset output, because a break is only ever
 placed on whitespace that already exists in the source; in LaTeX a newline and a
@@ -127,6 +137,64 @@ wrap normally. Lines that cannot be shortened safely, such as a long `\url`, are
 left long and reported at the end of a run.
 
 Use `% pluverse-format: off` and `% pluverse-format: on` to exclude a region.
+
+#### Proving the PDF did not change
+
+`--verify` takes your main `.tex` file. The formatter builds the PDF, formats,
+builds again, and compares the two renderings. If anything moved, it restores
+your files from the backup and exits non-zero.
+
+```sh
+bin/pluverse-format.py --verify main.tex main.tex sections/
+```
+
+Nothing else needs to be configured: LaTeX names its output after the job name,
+so `main.tex` always produces `main.pdf` beside it, and the build runs with that
+file's directory as the working directory. `--verify-dpi` (default 150) sets the
+comparison resolution.
+
+The document is built **to a fixed point** on both sides of the comparison, so
+that the two renderings differ only where formatting made them differ:
+
+- `pdflatex` runs repeatedly until the `.aux` file stops changing. On a clean
+  checkout the first pass renders `??` where the second renders `Section 2`, so
+  a single-pass build would report a change that formatting did not cause.
+- **BibTeX or Biber runs when the document cites anything**, otherwise citations
+  render as `[?]` and the bibliography is missing, and the document being
+  verified would not be the one you actually publish. Biber is used when a
+  `.bcf` file is present (biblatex), BibTeX when the `.aux` holds `\citation`
+  and `\bibdata` entries, and neither when the document cites nothing.
+
+`latexmk` is used when it is installed, since it already does all of the above.
+The `pdflatex` path is the fallback and follows the same sequence
+(`pdflatex -> bibtex -> pdflatex ...`).
+
+Note that verification rebuilds your PDF in place, so `main.pdf` is left as the
+build produced it.
+
+A build that does not actually regenerate the PDF would compare a file against
+itself and pass, so that case is reported as a failure rather than as a
+successful verification.
+
+The comparison **rasterizes every page and compares the images**, rather than
+comparing PDF bytes or extracted text:
+
+- *Raw bytes* are useless. A PDF embeds a creation timestamp and a document ID,
+  so two builds of identical sources routinely differ.
+- *Extracted text* (`pdftotext`) sees content but is blind to layout: a line
+  that rewrapped, a changed font, or a figure that shifted all extract the same.
+- *Rendered pages* catch both. Rendering is deterministic for a fixed renderer
+  and resolution, and it ignores the metadata that makes the bytes differ, so
+  identical pixels mean identical content **and** identical layout.
+
+This needs `pdftoppm` (from `poppler-utils`). If only `pdftotext` is present the
+tool falls back to a text comparison and says so, since layout then goes
+unchecked. When a difference is found and ImageMagick's `compare` is installed,
+a visual diff of the first differing page is written for inspection.
+
+Exit codes: `0` verified, `1` `--check` found unformatted files, `2` a usage or
+build error (your files are left untouched), `3` the PDF changed and the files
+were restored.
 
 ### Decompose a single BIG .tex file into multiple .tex files
 
