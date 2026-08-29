@@ -11,15 +11,15 @@
 \usepackage{amsthm}
 \usepackage{balance}
 \usepackage{enumitem}
-% The following packages will lead to a format issue in ACM template (i.e., wrong font size of the title)
+% The following packages cause a formatting issue in the ACM template (i.e., the wrong title font size).
 % \usepackage[T1]{fontenc}
 % \usepackage[scaled]{helvet}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{multicol}
 \usepackage{multirow}
-% The following package (natbib) will lead to conflict issue in IEEE template (i.e., conflict with cite package).
-% ACM template handles citations automatically, and does not recommend explicitly import natbib.
+% The natbib package conflicts with the cite package in the IEEE template.
+% The ACM template handles citations automatically and does not recommend loading natbib explicitly.
 % \usepackage{natbib}
 \usepackage{subcaption}
 \usepackage{url}
@@ -38,16 +38,16 @@
   tabsize=1,
   % ==== Line Number ====
   % numbers=left/right/none,  % activate per listing
-  % stepnuber=1/2/5/10,
+  % stepnumber=1/2/5/10,
   numberstyle=\tiny\color{gray},
   numbersep=4pt,
   %
-  % ==== Using Latex Commands Inside ====
-  % If you want to use Latex commands inside lstlisting, and the escapte char % does not
+  % ==== Using LaTeX Commands Inside ====
+  % If you want to use LaTeX commands inside lstlisting, and the escape char % does not
   % work for your specific lstlisting environment, then you should define a different
   % escapechar or define escapeinside in your specific environment. The default
-  % escape char should be % be default. 
-  % This is subject to change. Let's how this will work in the future.
+  % escape character is the percent sign.
+  % This is subject to change. Let's see how this works in the future.
   % escapeinside={(*@}{@*)},
   % ==== Font ====
   escapechar=\%,
@@ -100,7 +100,7 @@
 
 
 
-%https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
+% https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
 \definecolor{BlindColorWongOne}{HTML}{000000} % black
 \definecolor{BlindColorWongTwo}{HTML}{E69F00}
 \definecolor{BlindColorWongThree}{HTML}{56B4E9}
@@ -114,12 +114,12 @@
 % Comment
 \newcommand{\cmt}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}}}
 % Quote and comment.
-\newcommand{\qcmt}[2]{\textit{\textcolor{BlineColorTolEight}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qcmt}[2]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
 
-% TODO..
-\newcommand{\todo}[1]{\textit{\textcolor{BlineColorTolEight}{\footnotesize TODO: #1}}}
+% TODO.
+\newcommand{\todo}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}}}
 % Quote and todo.
-\newcommand{\qtodo}[2]{\textit{\textcolor{BlineColorTolEight}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qtodo}[2]{\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
 
 % Leave comments with name
 \definecolor{mygreen}{HTML}{02818a}

@@ -6,7 +6,7 @@
 ### Installing this project
 
 The recommended way is to add this project as a submodule of your git project. In shell,
-enter the directory of your git respository, and type 
+enter the directory of your Git repository, and type
 
 ```bash
 git submodule add git@github.com:uw-pluverse/pluverse-latex-style-guide.git
@@ -736,4 +736,3 @@ If I feel my question is addressed, I will simply comment out all comment macros
 %\cn{My comment here.}
 %\victor{done}
 ```
-
