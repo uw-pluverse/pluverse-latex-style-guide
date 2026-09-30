@@ -25,9 +25,9 @@ constants.
 
 ### Cloning your project with submodules
 
-To clone a Git repository along with all its submodules, 
-you can use the `--recurse-submodules` flag with the `git clone` command. 
-This ensures that all submodules are initialized 
+To clone a Git repository along with all its submodules,
+you can use the `--recurse-submodules` flag with the `git clone` command.
+This ensures that all submodules are initialized
 and updated to match the versions specified in the superproject.
 
 Here's the command:
@@ -71,7 +71,7 @@ git submodule update --remote --merge
 - `paper-<project name>` if the project is for a paper.
 - `thesis-<your first or full name>` if the project is for your thesis.
 
-Note that the naming convention is mainly to help the advisor manage multiple paper repositories. 
+Note that the naming convention is mainly to help the advisor manage multiple paper repositories.
 
 ### Use a grammar checker.
 
@@ -79,7 +79,7 @@ If you are using Texstudio, please follow this:  https://tex.stackexchange.com/a
 
 ### Short Column Width
 
-Keep a line short. I would recommend to break a line at 60. The benefits of doing this are
+Keep a line short. I would recommend to break a line at 80. The benefits of doing this are
 
 - Friendly to version control system. Easy to diff.
 - Better bi-directional mapping between the output pdf file and the latex source.
@@ -278,7 +278,7 @@ Headline-style capitalization should be used.
  - conjunctions (and, but, for, or, nor)
  - to, as
 
-Note: 
+Note:
 1. The word immediately preceding the hyphen should be capitalized. For example, it should be `Learning-Based Approach`. An exception is `X-ray`, instead of `X-Ray`.
 
 
@@ -298,7 +298,7 @@ These three websites can help you pick colors:
 
 * [Coloring for Colorblindness](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
 
-* [Data Viz Color Palette Generator](https://learnui.design/tools/data-color-picker.html) 
+* [Data Viz Color Palette Generator](https://learnui.design/tools/data-color-picker.html)
 
 * [ColorBrewer: Color Advice for Maps](https://colorbrewer2.org/)
 
@@ -421,7 +421,7 @@ You should not cite any papers in the `Abstract` section.
 
 ### Introduce acronyms in both abstract and introduction
 
-If you introduce an acronym in the `Abstract`, you **must** re-introduce it the first time it appears in the main body of the paper (usually the `Introduction`). 
+If you introduce an acronym in the `Abstract`, you **must** re-introduce it the first time it appears in the main body of the paper (usually the `Introduction`).
 
 This is because the `Abstract` and the main body of the paper are treated as two formally distinct texts. While a reader *can* read the abstract immediately before the introduction, many readers skip the abstract and jump straight into the `Introduction`, or they may read the abstract days before reading the full paper. Because the main text must be entirely self-contained and comprehensible on its own, you cannot assume the reader remembers (or has read) definitions established in the abstract.
 
@@ -564,19 +564,19 @@ When referencing labels, instead of using \ref, use \cref.
 
 ### use `(see Section 3)` or `(details in Section 3)` for forward reference.
 
-Note that 
+Note that
 "cf." is not the appropriate abbreviation for referring to details in a specific section. "cf." stands for "confer" in Latin, meaning "compare" or "consult," and is used to direct the reader to other material for comparison, not for additional details.
 
-### It is correct to use either `positive` or `comparative` form with `compared to` 
+### It is correct to use either `positive` or `comparative` form with `compared to`
 
-For example, 
+For example,
 
-`ME:` 
+`ME:`
 > Which version is grammatically correct?
 
   1. Company A has a larger market share, compared to Company B.
   2. Company A has a large market share, compared to Company B.
-  
+
 
 `ChatGPT:`
 > The first sentence is grammatically correct:
@@ -603,12 +603,12 @@ You can use `substantially` if no significance test is done.
 
 ### avoid using pie charts, use bar charts
 
-Bar charts are generally considered better than pie charts for several reasons (such as ease of comparison, precision, and handling complexity), 
+Bar charts are generally considered better than pie charts for several reasons (such as ease of comparison, precision, and handling complexity),
 particularly when it comes to presenting and interpreting data effectively:
 
 ### avoid using `very`
 
-For example, `very effective` can be replaced with `highly effective`. 
+For example, `very effective` can be replaced with `highly effective`.
 
 You might also consider `remarkably effective` or `amazingly effective`, though Chengnian does not like them much.
 
