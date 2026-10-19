@@ -29,6 +29,15 @@ $$\text{Abstract} \iff \text{Intro Contributions} \iff \text{Section Headings / 
    * When contrasting the proposed approach against prior work, the solution's claims must symmetrically answer the exact limitations raised in the problem statement.
    * *Example:* If Paragraph 1 states that prior work suffers from *"reliance on manual harnesses"* and *"heavy runtime instrumentation"*, Paragraph 2 must explicitly resolve them with matching terms (e.g., *"eliminating manual driver engineering"* and *"without requiring runtime instrumentation"*).
 
+#### 1.2.1 Which Section Is the Golden Standard
+
+The contract says that all sections must agree; it does not say which section moves when they disagree. During revision, the section that was most recently rewritten is often the one with the intended terminology, and the Introduction may be the stale one.
+
+* **Confirm before aligning.** When an agent finds a terminology conflict between sections, it must ask the user which section (or file, or paragraph) is ready and should serve as the golden standard, unless the user has already said so in the task. Do not guess, and do not silently pick a side.
+* **User designation overrides the default.** If the user names a golden standard (e.g., "the Approach section is final; align everything else to it"), the agent propagates that section's terminology to all other sections, figures, and tables, and must not change the golden section's terminology itself.
+* **Default when the user cannot be asked.** Only if confirmation is impossible (e.g., a non-interactive run) does the Introduction's contribution list and overview serve as the source of truth. In that case the agent must report every conflict it resolved and which side it chose.
+* **The override changes the direction, not the contract.** Every other section must still end up matching the golden one verbatim, per Rule 1.1.
+
 ---
 
 ### 1.3 Single Source of Truth via LaTeX Macros
@@ -50,7 +59,7 @@ Whenever an agent is asked to write, revise, or polish text in a paper, it must 
    grep -rn -i "<term_or_concept>" --include="*.tex" --exclude-dir=pluverse-latex-style-guide .
    ```
 2. **Step 2: Audit Introduction & Contributions**
-   Locate the Introduction (e.g., search for `\section{Introduction}` or file containing the intro). Carefully read its contribution list and stage-by-stage overview. This is the paper's definitive vocabulary source of truth.
+   Locate the Introduction (e.g., search for `\section{Introduction}` or file containing the intro). Carefully read its contribution list and stage-by-stage overview. This is the paper's default vocabulary source of truth, unless the user has designated another section as the golden standard (Rule 1.2.1).
 3. **Step 3: Check Section Headings and Figure Labels**
    Locate the methodology/system design sections and inspect their `\section` / `\subsection` titles and accompanying diagram labels to ensure naming alignment.
 4. **Step 4: Verify Macro Definitions**
@@ -68,3 +77,4 @@ Before committing or reporting completion of any writing task, verify the follow
 - [ ] **Figure Alignment:** Verified that component names match box labels in architecture diagrams.
 - [ ] **Macro Usage:** Used LaTeX macros from definition files (`constants.tex`, `macros.tex`, preamble, etc.) for tool names, benchmarks, and core concepts.
 - [ ] **Symmetric Addressing:** Verified that solutions in the contribution directly address the limitation terms in the problem statement.
+- [ ] **Golden Standard Confirmed:** Where sections disagreed, asked the user which section is the golden standard (or reported the conflicts and the default choice) before aligning the others.
