@@ -663,6 +663,8 @@ Similarly, instead of writing `1 apple a day is good for your body`, you should 
 
 ### Other files in this repo
 
+* `paper-writing-rules.md`, rules that AI agents (and human co-authors) must follow when drafting or revising paper text.
+
 * `comment_macror.tex`, to leave comments
 * `auto_counter_macro.tex`,  If you have a lot of findings/reponses, you can use the following commands to automatic generate counters.
 * `abbr_macros.tex`, macro for common macros.
