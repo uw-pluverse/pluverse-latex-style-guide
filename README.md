@@ -59,11 +59,13 @@ git submodule update --remote --merge
 
 ### Posting push notifications to a Teams channel
 
-GitHub no longer sends push notification emails, so this repo provides a reusable
-GitHub Actions workflow that posts a message to a Teams channel on every push.
+GitHub no longer sends push notification emails
+([announcement](https://github.blog/changelog/2026-10-15-email-notifications-for-repository-push-events-have-been-retired/)),
+so this repo provides a reusable GitHub Actions workflow that posts a message to
+a Teams channel on every push.
 
 1. In Teams, open the channel, click `...` → `Workflows`, and choose the template
-   `Post to a channel when a webhook request is received`. Copy the generated URL.
+   `Send webhook alerts to a channel`. Copy the generated URL.
 2. In your paper repo on GitHub, go to `Settings` → `Secrets and variables` → `Actions`,
    and add a repository secret named `TEAMS_WEBHOOK_URL` with the copied URL.
 3. In your paper repo, copy the caller workflow, then commit and push it.
