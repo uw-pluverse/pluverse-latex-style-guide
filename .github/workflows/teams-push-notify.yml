@@ -15,23 +15,26 @@ jobs:
       - name: Post to Teams
         env:
           WEBHOOK: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          COMMITS: ${{ toJSON(github.event.commits) }}
           REPO: ${{ github.repository }}
           ACTOR: ${{ github.actor }}
           BRANCH: ${{ github.ref_name }}
-          COMPARE: ${{ github.event.compare }}
-          FORCED: ${{ github.event.forced }}
+          MAX_COMMITS: 20
+          MAX_SUBJECT: 200
         run: |
           if [ -z "$WEBHOOK" ]; then
             echo "TEAMS_WEBHOOK_URL is not set; skipping."
             exit 0
           fi
 
-          jq -n \
-            --argjson commits "$COMMITS" \
+          # Read commits from the event file rather than env/args, which are
+          # size-limited; cap commits and subject length to stay under the
+          # Teams message size limit.
+          jq \
             --arg repo "$REPO" --arg actor "$ACTOR" --arg branch "$BRANCH" \
-            --arg compare "$COMPARE" --arg forced "$FORCED" '
-            {
+            --argjson max_commits "$MAX_COMMITS" --argjson max_subject "$MAX_SUBJECT" '
+            .commits as $commits
+            | ($commits | length) as $n
+            | {
               type: "message",
               attachments: [{
                 contentType: "application/vnd.microsoft.card.adaptive",
@@ -43,16 +46,25 @@ jobs:
                   body: (
                     [{
                       type: "TextBlock", weight: "Bolder", wrap: true,
-                      text: "\($actor) \(if $forced == "true" then "force-pushed" else "pushed" end) \($commits | length) commit(s) to \($repo):\($branch)"
+                      text: "\($actor) \(if .forced then "force-pushed" else "pushed" end) \($n) commit(s) to \($repo):\($branch)"
                     }]
-                    + [$commits[] | {
+                    + [$commits[:$max_commits][] | {
                         type: "TextBlock", wrap: true, spacing: "Small",
-                        text: "`\(.id[0:7])` \(.message | split("\n")[0]) — \(.author.name)"
+                        text: (
+                          (.message | split("\n")[0]) as $subject
+                          | (if ($subject | length) > $max_subject
+                             then $subject[:$max_subject - 1] + "…" else $subject end) as $subject
+                          | "`\(.id[0:7])` \($subject) — \(.author.name)"
+                        )
                       }]
+                    + (if $n > $max_commits
+                       then [{ type: "TextBlock", wrap: true, spacing: "Small", isSubtle: true,
+                               text: "…and \($n - $max_commits) more" }]
+                       else [] end)
                   ),
-                  actions: [{ type: "Action.OpenUrl", title: "View changes", url: $compare }]
+                  actions: [{ type: "Action.OpenUrl", title: "View changes", url: .compare }]
                 }
               }]
-            }' > payload.json
+            }' "$GITHUB_EVENT_PATH" > payload.json
 
           curl -fsS -X POST -H "Content-Type: application/json" -d @payload.json "$WEBHOOK"
