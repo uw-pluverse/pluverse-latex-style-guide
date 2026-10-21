@@ -1,0 +1,8 @@
+# Copy to .github/workflows/teams-push-notify.yml in your paper repo,
+# then add the TEAMS_WEBHOOK_URL repository secret. See README.md.
+name: Teams push notification
+on: push
+jobs:
+  notify:
+    uses: uw-pluverse/pluverse-latex-style-guide/.github/workflows/teams-push-notify.yml@master
+    secrets: inherit

@@ -1,0 +1,58 @@
+# Reusable workflow: post a message to a Microsoft Teams channel on every push.
+# Paper repos call it via template/teams-push-notify.yml; see README.md.
+name: Teams push notification (reusable)
+
+on:
+  workflow_call:
+    secrets:
+      TEAMS_WEBHOOK_URL:
+        required: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Teams
+        env:
+          WEBHOOK: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          COMMITS: ${{ toJSON(github.event.commits) }}
+          REPO: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          BRANCH: ${{ github.ref_name }}
+          COMPARE: ${{ github.event.compare }}
+          FORCED: ${{ github.event.forced }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "TEAMS_WEBHOOK_URL is not set; skipping."
+            exit 0
+          fi
+
+          jq -n \
+            --argjson commits "$COMMITS" \
+            --arg repo "$REPO" --arg actor "$ACTOR" --arg branch "$BRANCH" \
+            --arg compare "$COMPARE" --arg forced "$FORCED" '
+            {
+              type: "message",
+              attachments: [{
+                contentType: "application/vnd.microsoft.card.adaptive",
+                contentUrl: null,
+                content: {
+                  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                  type: "AdaptiveCard",
+                  version: "1.4",
+                  body: (
+                    [{
+                      type: "TextBlock", weight: "Bolder", wrap: true,
+                      text: "\($actor) \(if $forced == "true" then "force-pushed" else "pushed" end) \($commits | length) commit(s) to \($repo):\($branch)"
+                    }]
+                    + [$commits[] | {
+                        type: "TextBlock", wrap: true, spacing: "Small",
+                        text: "`\(.id[0:7])` \(.message | split("\n")[0]) — \(.author.name)"
+                      }]
+                  ),
+                  actions: [{ type: "Action.OpenUrl", title: "View changes", url: $compare }]
+                }
+              }]
+            }' > payload.json
+
+          curl -fsS -X POST -H "Content-Type: application/json" -d @payload.json "$WEBHOOK"

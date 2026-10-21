@@ -57,6 +57,26 @@ Update the submodules to the latest commit from the upstream repository (if the 
 git submodule update --remote --merge
 ```
 
+### Posting push notifications to a Teams channel
+
+GitHub no longer sends push notification emails, so this repo provides a reusable
+GitHub Actions workflow that posts a message to a Teams channel on every push.
+
+1. In Teams, open the channel, click `...` → `Workflows`, and choose the template
+   `Post to a channel when a webhook request is received`. Copy the generated URL.
+2. In your paper repo on GitHub, go to `Settings` → `Secrets and variables` → `Actions`,
+   and add a repository secret named `TEAMS_WEBHOOK_URL` with the copied URL.
+3. In your paper repo, copy the caller workflow, then commit and push it.
+
+```sh
+mkdir -p .github/workflows
+cp pluverse-latex-style-guide/template/teams-push-notify.yml .github/workflows/
+```
+
+Each paper repo has its own secret, so different repos can post to different channels.
+The notification logic lives in `.github/workflows/teams-push-notify.yml` of this repo,
+so updates here take effect in all paper repos without touching them.
+
 
 # Tools, Files and Formats
 
