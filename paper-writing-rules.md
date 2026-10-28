@@ -78,3 +78,68 @@ Before committing or reporting completion of any writing task, verify the follow
 - [ ] **Macro Usage:** Used LaTeX macros from definition files (`constants.tex`, `macros.tex`, preamble, etc.) for tool names, benchmarks, and core concepts.
 - [ ] **Symmetric Addressing:** Verified that solutions in the contribution directly address the limitation terms in the problem statement.
 - [ ] **Golden Standard Confirmed:** Where sections disagreed, asked the user which section is the golden standard (or reported the conflicts and the default choice) before aligning the others.
+
+---
+
+## Rule 2: Minimize Em-Dashes to Avoid LLM Hallmarks
+
+### 2.1 Core Principle: Avoid "---" as Parenthetical Crutches
+Over-reliance on em-dashes (`---`), particularly paired em-dashes for parenthetical insertions (e.g., `---such as X and Y---`), is one of the most prominent stylistic hallmarks of LLM-generated prose:
+* **Why this matters:** Academic peer reviewers actively look for signs of uncurated LLM generation. Frequent em-dashes disrupt sentence rhythm, loosen deductive structure, and create an impression of machine-generated boilerplate.
+* **Rule:** Strive to use `---` as little as possible. In formal computer science and mathematical writing, prefer standard, disciplined academic punctuation: parentheses for illustrative lists, commas for appositives, colons for elaborations, or two separate declarative sentences.
+
+---
+
+### 2.2 Standard Replacements for Common Em-Dash Patterns
+
+1. **Illustrative Examples (`---such as ...---`):**
+   * **Anti-pattern:**
+     `leveraging solver diagnostics---such as quantifier profiles and conflict statistics---to isolate conflicting constraints`
+   * **Preferred (Parentheses):**
+     `leveraging solver diagnostics (such as quantifier profiles and conflict statistics) to isolate conflicting constraints`
+   * Use parentheses `(...)` for examples, parameter settings, tool configurations, and short clarifications that should not derail sentence flow.
+
+2. **Appositives and Descriptive Clauses (`---which ...---`):**
+   * **Anti-pattern:**
+     `Lean---which has a minimal trusted kernel---offers deductive verification`
+   * **Preferred (Commas):**
+     `Lean, which has a minimal trusted kernel, offers deductive verification`
+   * When an aside integrates smoothly into the cadence of the sentence, standard commas `, ...,` provide a much more natural, scholarly flow.
+
+3. **Elaboration and Consequence (`...---establishing that ...`):**
+   * **Anti-pattern:**
+     `We evaluate the three objectives---establishing which bottlenecks require Lean.`
+   * **Preferred (Subordination or Colon):**
+     `We evaluate the three objectives to establish which bottlenecks require Lean.`
+     *(or: `...three objectives: the evaluation establishes which bottlenecks...`)*
+   * Connective clauses should use explicit subordinating conjunctions (`to establish`, `thereby establishing`) or a colon rather than a trailing em-dash.
+
+4. **Compound Thoughts:**
+   * **Anti-pattern:**
+     `SMT solvers discharge most queries quickly---however, hard instances time out.`
+   * **Preferred (Separate Sentences or Semicolon):**
+     `SMT solvers discharge most queries quickly. However, hard instances time out.`
+   * Split compound, multi-clause arguments into distinct, crisp declarative sentences.
+
+---
+
+### 2.3 Agent Em-Dash Audit Protocol
+
+Whenever an agent writes, revises, or reviews any section of a paper, it must audit all em-dash occurrences:
+
+1. **Search for em-dashes across LaTeX source files:**
+   ```bash
+   grep -rn "\-\-\-" --include="*.tex" .
+   ```
+2. **Review each match:**
+   * Does it use `---such as ...---` or `---which ...---`? Replace with parentheses `(...)` or commas `, ...,`.
+   * Does it join two independent thoughts? Split into two sentences or use appropriate subordinating conjunctions.
+   * Only retain an em-dash if it provides genuine rhetorical emphasis that cannot be achieved with academic punctuation, and ensure its use is exceptionally rare across the entire manuscript.
+
+---
+
+### 2.4 Agent Punctuation Checklist
+
+- [ ] **Em-Dash Audit:** Grepped for `\-\-\-` across all `.tex` files to ensure em-dashes are minimized and never used as parenthetical crutches.
+- [ ] **No `---such as ...---`:** Replaced all parenthetical illustrative insertions with standard parentheses `(...)`.
+- [ ] **No Disjointed Joins:** Verified that clauses connected by em-dashes are restructured with appropriate academic connectives, colons, or sentence breaks.
