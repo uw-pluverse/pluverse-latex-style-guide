@@ -111,15 +111,20 @@
 \definecolor{BlindColorWongEight}{HTML}{CC79A7}
 % End of Coloring for ColorBlindness
 
+% Quote and comment: \QuotedCommentTemplate{color}{\basemacro}{comment}{quoted text}
+% expands to \basemacro{comment} followed by the quoted text in the given color.
+% Use it to define the \q* variant of a comment macro without duplicating its body.
+\newcommand{\QuotedCommentTemplate}[4]{#2{#3}\textcolor{#1}{~#4}}
+
 % Comment
 \newcommand{\cmt}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}}}
 % Quote and comment.
-\newcommand{\qcmt}[2]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qcmt}[2]{\QuotedCommentTemplate{blue}{\cmt}{#1}{#2}}
 
 % TODO.
 \newcommand{\todo}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}}}
 % Quote and todo.
-\newcommand{\qtodo}[2]{\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}} {\textcolor{blue}{#2}}}
+\newcommand{\qtodo}[2]{\QuotedCommentTemplate{blue}{\todo}{#1}{#2}}
 
 % Leave comments with name
 \definecolor{mygreen}{HTML}{02818a}
@@ -138,9 +143,9 @@
 % Leave comments
 \newcommand{\NamedCommentTemplate}[3]{\colorbox{#1}{\textcolor{white}{\scriptsize #2:}}~\textcolor{#1}{$\lceil$#3$\rfloor$}}
 \newcommand{\cn}[1]{\NamedCommentTemplate{BlindColorTolSeven}{CN}{#1}}
-\newcommand{\qcn}[2]{\cn{#1}{\textcolor{violet}{~#2}}}
+\newcommand{\qcn}[2]{\QuotedCommentTemplate{violet}{\cn}{#1}{#2}}
 \newcommand{\victor}[1]{\NamedCommentTemplate{BlindColorTolTwo}{Victor}{#1}}
-\newcommand{\qvictor}[2]{\victor{#1}{\textcolor{violet}{~#2}}}
+\newcommand{\qvictor}[2]{\QuotedCommentTemplate{violet}{\victor}{#1}{#2}}
 \newcommand{\xt}[1]{\NamedCommentTemplate{BlindColorTolSix}{Xintong}{#1}}
 \newcommand{\lch}[1]{\NamedCommentTemplate{BlindColorTolFive}{Chunhao}{#1}}
 \newcommand{\xhx}[1]{\NamedCommentTemplate{BlindColorTolFour}{Hongxu}{#1}}
