@@ -111,18 +111,25 @@
 \definecolor{BlindColorWongEight}{HTML}{CC79A7}
 % End of Coloring for ColorBlindness
 
+% Comment visibility switch. A paper writes \showcommentsfalse anywhere in its
+% preamble to hide every comment macro defined below (\cmt, \todo, \cn, ...).
+% Hidden comment macros swallow their argument and typeset nothing; the \Q*
+% variants keep the quoted paper text and drop only the comment.
+\newif\ifshowcomments
+\showcommentstrue
+
 % Quote and comment: \QuotedCommentTemplate{color}{\basemacro}{comment}{quoted text}
 % expands to \basemacro{comment} followed by the quoted text in the given color.
 % Use it to define the \Q* variant of a comment macro without duplicating its body.
-\newcommand{\QuotedCommentTemplate}[4]{#2{#3}\textcolor{#1}{~#4}}
+\newcommand{\QuotedCommentTemplate}[4]{\ifshowcomments#2{#3}\textcolor{#1}{~#4}\else#4\fi}
 
 % Comment
-\newcommand{\cmt}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}}}
+\newcommand{\cmt}[1]{\ifshowcomments\textit{\textcolor{BlindColorTolEight}{\footnotesize CMT: #1}}\else\ignorespaces\fi}
 % Quote and comment.
 \newcommand{\Qcmt}[2]{\QuotedCommentTemplate{blue}{\cmt}{#1}{#2}}
 
 % TODO.
-\newcommand{\todo}[1]{\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}}}
+\newcommand{\todo}[1]{\ifshowcomments\textit{\textcolor{BlindColorTolEight}{\footnotesize TODO: #1}}\else\ignorespaces\fi}
 % Quote and todo.
 \newcommand{\Qtodo}[2]{\QuotedCommentTemplate{blue}{\todo}{#1}{#2}}
 
@@ -141,7 +148,7 @@
 \mathchardef\mhyphen="2D
 
 % Leave comments
-\newcommand{\NamedCommentTemplate}[3]{\colorbox{#1}{\textcolor{white}{\scriptsize #2:}}~\textcolor{#1}{$\lceil$#3$\rfloor$}}
+\newcommand{\NamedCommentTemplate}[3]{\ifshowcomments\colorbox{#1}{\textcolor{white}{\scriptsize #2:}}~\textcolor{#1}{$\lceil$#3$\rfloor$}\else\ignorespaces\fi}
 \newcommand{\cn}[1]{\NamedCommentTemplate{BlindColorTolSeven}{CN}{#1}}
 \newcommand{\Qcn}[2]{\QuotedCommentTemplate{violet}{\cn}{#1}{#2}}
 \newcommand{\victor}[1]{\NamedCommentTemplate{BlindColorTolTwo}{Victor}{#1}}

@@ -711,6 +711,19 @@ Main text here. \cn{My comment spans two lines
 } Main text here.
 ```
 
+#### Hiding All Comments
+
+`pluverse-preamble.tex` defines the switch `\ifshowcomments`, on by default. To
+produce a clean build with every comment hidden, write the following anywhere in
+your preamble (before or after the `\input` of `pluverse-preamble.tex`):
+
+```tex
+\showcommentsfalse
+```
+
+Hidden comment macros typeset nothing. The quoting variants (`\Qcn{comment}{text}`,
+`\Qcmt{comment}{text}`, ...) keep the quoted paper text and drop only the comment.
+
 #### Resolving Comments
 
 If you receive a comment from a reviewer and you address it,
