@@ -722,7 +722,7 @@ your preamble (before or after the `\input` of `pluverse-preamble.tex`):
 ```
 
 Hidden comment macros typeset nothing. The quoting variants (`\Qcn{comment}{text}`,
-`\Qcmt{comment}{text}`, ...) keep the quoted paper text and drop only the comment.
+`\Qtodo{comment}{text}`, ...) keep the quoted paper text and drop only the comment.
 
 #### Resolving Comments
 
