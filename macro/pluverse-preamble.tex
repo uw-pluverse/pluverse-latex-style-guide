@@ -118,10 +118,10 @@
 \newif\ifshowcomments
 \showcommentstrue
 
-% Quote and comment: \QuotedCommentTemplate{color}{\basemacro}{comment}{quoted text}
-% expands to \basemacro{comment} followed by the quoted text in the given color.
+% Quote and comment: \QuotedCommentTemplate{\basemacro}{comment}{quoted text}
+% expands to \basemacro{comment} followed by the quoted text in violet.
 % Use it to define the \Q* variant of a comment macro without duplicating its body.
-\newcommand{\QuotedCommentTemplate}[4]{\ifshowcomments#2{#3}\textcolor{#1}{~#4}\else#4\fi}
+\newcommand{\QuotedCommentTemplate}[3]{\ifshowcomments#1{#2}\textcolor{violet}{~#3}\else#3\fi}
 
 % Leave comments with name
 \definecolor{mygreen}{HTML}{02818a}
@@ -140,11 +140,11 @@
 % Leave comments
 \newcommand{\NamedCommentTemplate}[3]{\ifshowcomments\colorbox{#1}{\textcolor{white}{\scriptsize #2:}}~\textcolor{#1}{$\lceil$#3$\rfloor$}\else\ignorespaces\fi}
 \newcommand{\todo}[1]{\NamedCommentTemplate{BlindColorTolEight}{TODO}{#1}}
-\newcommand{\Qtodo}[2]{\QuotedCommentTemplate{violet}{\todo}{#1}{#2}}
+\newcommand{\Qtodo}[2]{\QuotedCommentTemplate{\todo}{#1}{#2}}
 \newcommand{\cn}[1]{\NamedCommentTemplate{BlindColorTolSeven}{CN}{#1}}
-\newcommand{\Qcn}[2]{\QuotedCommentTemplate{violet}{\cn}{#1}{#2}}
+\newcommand{\Qcn}[2]{\QuotedCommentTemplate{\cn}{#1}{#2}}
 \newcommand{\victor}[1]{\NamedCommentTemplate{BlindColorTolTwo}{Victor}{#1}}
-\newcommand{\Qvictor}[2]{\QuotedCommentTemplate{violet}{\victor}{#1}{#2}}
+\newcommand{\Qvictor}[2]{\QuotedCommentTemplate{\victor}{#1}{#2}}
 \newcommand{\xt}[1]{\NamedCommentTemplate{BlindColorTolSix}{Xintong}{#1}}
 \newcommand{\lch}[1]{\NamedCommentTemplate{BlindColorTolFive}{Chunhao}{#1}}
 \newcommand{\xhx}[1]{\NamedCommentTemplate{BlindColorTolFour}{Hongxu}{#1}}
