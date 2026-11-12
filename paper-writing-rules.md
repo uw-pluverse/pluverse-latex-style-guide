@@ -143,3 +143,18 @@ Whenever an agent writes, revises, or reviews any section of a paper, it must au
 - [ ] **Em-Dash Audit:** Grepped for `\-\-\-` across all `.tex` files to ensure em-dashes are minimized and never used as parenthetical crutches.
 - [ ] **No `---such as ...---`:** Replaced all parenthetical illustrative insertions with standard parentheses `(...)`.
 - [ ] **No Disjointed Joins:** Verified that clauses connected by em-dashes are restructured with appropriate academic connectives, colons, or sentence breaks.
+
+---
+
+## Rule 3: Visual Hierarchy for Run-in Paragraph Headings
+
+### 3.1 Two-Level Run-in Headings: `\myparagraph` vs. `\itemParagraph`
+Academic papers frequently organize technical content into top-level points and subordinate sub-points (such as multi-stage pipelines, sequential mechanisms, or case analyses):
+* **Top-Level Paragraph (`\myparagraph`):** Uses **bold-italic** (`\textit{\textbf{#1.}}`). Used for major concept divisions and independent themes within a section or subsection.
+* **Subordinate Paragraph (`\itemParagraph`):** Uses **plain italic** (`\textit{#1.}`), optionally paired with an upright circled number (`\circled{1}`) or ordinal prefix. Used for sub-steps, sub-properties, or enumerated sub-cases nested under a parent `\myparagraph`.
+
+### 3.2 Typographic Antipatterns for Paragraph Headings
+1. **Never Use Underlines:**
+   * **Why this matters:** Underlining was historically a typewriter workaround because mechanical typewriters lacked italic type. In typeset documents, underline rules cut directly through letter descenders (`g`, `j`, `p`, `q`, `y`), creating visual noise and clutter. Professional academic publishers (ACM, IEEE, USENIX) strongly discourage underlines for headings and running text.
+2. **Avoid "Bold Fatigue":**
+   * **Why this matters:** If subordinate paragraphs also use bold text, the page becomes saturated with heavy black ink spots. This visual clutter tires the reader and destroys the visual hierarchy because top-level and subordinate headings blend together.

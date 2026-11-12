@@ -63,8 +63,19 @@
 
 \usepackage{tikz}
 \usepackage{pgfplots}
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-    \node[shape=circle,draw,inner sep=0.5pt] (char) {\small#1};}}
+% Circled numbers/characters for sequential steps, pipeline stages, and
+% cross-referencing between architecture diagrams and text.
+% - Uses baseline=(char.base) for vertical alignment with adjacent text.
+% - Scales font relatively (0.85em) rather than hardcoding \small so that
+%   circles scale down proportionally inside smaller contexts (\footnotesize).
+% - Resets minimum dimensions so nested calls inside TikZ diagram nodes
+%   do not inherit the outer node's minimum height/width (e.g. 7mm boxes).
+% - Enforces \upshape so the enclosed character remains strictly upright,
+%   even when invoked inside italic contexts (e.g., \itemParagraph).
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
+    \node[shape=circle,draw,inner sep=0.5pt,
+          minimum size=0pt,minimum height=0pt,minimum width=0pt]
+      (char) {\upshape\fontsize{0.85em}{0.85em}\selectfont#1};}}
 \usetikzlibrary{shapes}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{arrows.meta, positioning}
@@ -174,8 +185,18 @@
 }
 
 % Run-in item label, one level below \myparagraph's bold-italic.
+% Typographic rationale:
+% - Uses italic (\textit) rather than bold or underline.
+% - Why NOT bold: using bold for both \myparagraph and \itemParagraph causes
+%   "bold fatigue" (dense dark patches) and flattens the visual hierarchy.
+% - Why NOT underline: in professional typesetting, underlines are an
+%   anti-pattern. Underlining was historically a typewriter workaround for
+%   italics; on typeset pages, underline rules collide with descenders
+%   (g, j, p, q, y), looking cluttered and amateurish. Academic publishers
+%   (ACM, IEEE) strongly discourage underlines.
 \newcommand{\itemParagraph}[1]{%
-  \vspace*{0.04cm}\noindent\textit{#1.}\quad}
+  \par\addvspace{2pt plus 1pt}%
+  \noindent\textit{#1.}\quad\ignorespaces}
 
 \newcommand{\mycode}[1]{\texttt{#1}\xspace}
 
