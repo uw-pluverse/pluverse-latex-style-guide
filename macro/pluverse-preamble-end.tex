@@ -1,3 +1,18 @@
+% ---------------------------------------------------------------------------
+% URLs and hyperlinks.
+% IEEEtran loads neither hyperref nor T1 font encoding. Without hyperref,
+% \url{...} is plain text and PDF viewers guess the link, truncating it at a
+% line break; with the default OT1 encoding, `_' is not a real glyph, so the
+% guessed link (and copy-paste) also breaks at underscores.
+% acmart already loads both, so we only add them when missing
+% (T1 is skipped for acmart; see the note in pluverse-preamble.tex).
+% hyperref must be loaded before cleveref.
+% ---------------------------------------------------------------------------
+\makeatletter
+\@ifclassloaded{acmart}{}{\usepackage[T1]{fontenc}}
+\@ifpackageloaded{hyperref}{}{\usepackage[hidelinks]{hyperref}}
+\makeatother
+
 \usepackage{cleveref} % This package must be loaded in the end.
 
 
@@ -43,3 +58,21 @@
 
 \crefformat{section}{\S~#2#1#3}
 \crefmultiformat{section}{\S\S~#2#1#3}{ and~#2#1#3}{, #2#1#3}{, and~#2#1#3}
+
+% ---------------------------------------------------------------------------
+% algorithm2e + hyperref: algorithm2e steps line numbers with
+% \hyper@refstepcounter, which bypasses cleveref, so \cref{<line label>}
+% prints "Algorithm k" instead of "Line k". Re-step the counter with
+% \refstepcounter so cleveref sees the `line' type.
+% ---------------------------------------------------------------------------
+\makeatletter
+\@ifpackageloaded{algorithm2e}{%
+  \renewcommand{\algocf@nl@sethref}[1]{%
+    \renewcommand{\theHAlgoLine}{\thealgocfproc.#1}%
+    \addtocounter{AlgoLine}{-1}\refstepcounter{AlgoLine}\gdef\@currentlabel{#1}%
+  }%
+}{}
+\makeatother
+\crefname{line}{Line}{Lines}
+\Crefname{line}{Line}{Lines}
+\crefrangeformat{line}{Line~#3#1#4--#5#2#6}
