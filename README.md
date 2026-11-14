@@ -208,6 +208,31 @@ were restored.
 - Friendly to version control system. Easy to diff. Minimize merge conflicts.
 - Better organization of the paper, for example, each section is in its own file.
 
+### Use `\input` to show revised text in a response letter
+
+When a response letter quotes text from the revised paper,
+`\input` the corresponding `.tex` file instead of copying the text,
+so that the letter always shows exactly what is in the paper.
+If you only need part of a section, move that part into its own file
+and `\input` it in both the paper and the letter.
+
+```tex
+\begin{copypaper}
+    \input{sections/approach-overview}
+\end{copypaper}
+```
+
+Figures and tables shown in the letter should have the same numbers as in
+the paper. Use `\setcounter` right before the float to align the numbering,
+e.g., for Figure 5 in the paper:
+
+```tex
+\setcounter{figure}{4}  % the next figure is numbered 5
+\input{figures/overview}
+```
+
+Similarly, use `\setcounter{table}{...}` for tables.
+
 ### Have a main.tex file
 
 - Easy to identify the entry of the tex project.
