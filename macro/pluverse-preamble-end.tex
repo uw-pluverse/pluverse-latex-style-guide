@@ -73,6 +73,8 @@
   }%
 }{}
 \makeatother
-\crefname{line}{Line}{Lines}
+% \cref (within a sentence) -> "line 10"; \Cref (start of a sentence) -> "Line 10".
+\crefname{line}{line}{lines}
 \Crefname{line}{Line}{Lines}
-\crefrangeformat{line}{Line~#3#1#4--#5#2#6}
+\crefrangeformat{line}{line~#3#1#4--#5#2#6}
+\Crefrangeformat{line}{Line~#3#1#4--#5#2#6}

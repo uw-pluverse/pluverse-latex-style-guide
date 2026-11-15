@@ -567,10 +567,11 @@ To use cleveref, load the cleveref package last and use the following configurat
 When referencing labels, instead of using \ref, use \cref.
 
 With `hyperref` loaded, `algorithm2e` numbers lines in a way that bypasses
-cleveref, so `\cref{line:foo}` would print "Algorithm k" instead of "Line k".
-`pluverse-preamble-end.tex` includes a patch for this and defines
-`\crefname{line}{Line}{Lines}`, so `\cref{line:foo}` prints "Line 5" and
-`\crefrange{line:a}{line:b}` prints "Line 6--19".
+cleveref, so `\cref{line:foo}` would print "Algorithm k" instead of "line k".
+`pluverse-preamble-end.tex` includes a patch for this and defines the names
+for line references: within a sentence, `\cref{line:foo}` prints "line 5" and
+`\crefrange{line:a}{line:b}` prints "line 6--19"; at the start of a sentence,
+use `\Cref` and `\Crefrange` to print "Line 5" and "Line 6--19".
 
 
 ### that v.s. which
