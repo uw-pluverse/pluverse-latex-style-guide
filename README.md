@@ -464,6 +464,26 @@ Use `@misc`. Here is an example.
 }
 ```
 
+### Make URLs real hyperlinks (IEEE template)
+
+IEEEtran does not load `hyperref`, so `\url{...}` in the bibliography is only
+printed text. PDF viewers then *guess* links from the text and cut them at
+line breaks or at `_` (which is not a real glyph under the default OT1
+encoding), so reviewers clicking a reference may land on a truncated URL.
+
+`pluverse-preamble-end.tex` therefore loads the following packages
+(before `cleveref`) when the class has not already done so
+(`acmart` loads both):
+
+```tex
+\usepackage[T1]{fontenc}          % `_' etc. become real glyphs
+\usepackage[hidelinks]{hyperref}  % embed full, clickable URLs
+```
+
+Do not load `hyperref` again after `cleveref`.
+Before submission, click a few long URLs in the bibliography
+to check that they open the full address.
+
 ### Use macros for constants
 
 If you have some numbers, or string literals (e.g., functions) used throughout your paper, create a macro, and use that macro instead.
@@ -570,6 +590,13 @@ To use cleveref, load the cleveref package last and use the following configurat
 ```
 
 When referencing labels, instead of using \ref, use \cref.
+
+With `hyperref` loaded, `algorithm2e` numbers lines in a way that bypasses
+cleveref, so `\cref{line:foo}` would print "Algorithm k" instead of "line k".
+`pluverse-preamble-end.tex` includes a patch for this and defines the names
+for line references: within a sentence, `\cref{line:foo}` prints "line 5" and
+`\crefrange{line:a}{line:b}` prints "line 6--19"; at the start of a sentence,
+use `\Cref` and `\Crefrange` to print "Line 5" and "Line 6--19".
 
 
 ### that v.s. which
